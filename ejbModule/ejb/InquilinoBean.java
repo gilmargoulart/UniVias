@@ -29,5 +29,4 @@ public class InquilinoBean implements InquilinoBeanLocal {
 		// TODO Auto-generated method stub
 		
 	}
-
 }
