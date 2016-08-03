@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -13,13 +14,13 @@ import javax.persistence.TemporalType;
 @Entity
 public class Financeiro {
 	
-	@ManyToOne
-	private Inquilino inquilino;
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
+	@ManyToOne
+	@JoinColumn
+	private Inquilino inquilino;
 	/**
 	 * Indica o tipo do documento financeiro:
 	 * 	- A pagar
