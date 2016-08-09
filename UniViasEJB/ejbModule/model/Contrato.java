@@ -7,15 +7,21 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
 public class Contrato {
 	
+	@ManyToOne
+	@JoinColumn
+	private Inquilino inquilino;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private long id;
 	
 	@Column(length = 2000)
 	private String textoContrato;
@@ -23,12 +29,20 @@ public class Contrato {
 	
 	@Temporal(value = TemporalType.DATE)
 	private Date periodoInicial;
+	
+	@Temporal(value = TemporalType.DATE)
 	private Date periodoFinal;
 	
-	public int getId() {
+	public Inquilino getInquilino() {
+		return inquilino;
+	}
+	public void setInquilino(Inquilino inquilino) {
+		this.inquilino = inquilino;
+	}
+	public long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	public String getTextoContrato() {

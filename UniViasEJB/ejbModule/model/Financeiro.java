@@ -16,11 +16,12 @@ public class Financeiro {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private long id;
 	
 	@ManyToOne
 	@JoinColumn
 	private Inquilino inquilino;
+	
 	/**
 	 * Indica o tipo do documento financeiro:
 	 * 	- A pagar
@@ -66,11 +67,11 @@ public class Financeiro {
 		this.inquilino = inquilino;
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
