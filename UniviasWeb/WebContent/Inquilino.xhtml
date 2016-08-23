@@ -9,7 +9,7 @@
 			<title>Manter Inquilinos</title>
 		</h:head>
 		<body>
-			<h:form>
+			<h:form id="formInquilino">
 				<p:panel header="Manter Inquilino">
 					<p:dataTable>
 						<f:facet name="header">Lista de inquilinos</f:facet>
@@ -33,8 +33,44 @@
 							<f:facet name="header">Responsável</f:facet>
 							<h:outputText> </h:outputText>
 						</p:column>
+						
+						<f:facet name="footer">
+							<p:commandButton value="Incluir" id="cbIncluir" onsuccess="PF('dlg1').show()"/>
+						</f:facet>
 					</p:dataTable>
 				</p:panel>
 			</h:form>
+			
+			<!--  -->
+			
+			<p:dialog width="500px" height="300px" id="detailDialog"
+				modal="true"
+				header="Detalhe do Inquilino"
+				widgetVar="dlg1">
+				<h:form id="form">
+					<h:panelGrid id="formDetail" columns="2">
+						<h:outputLabel id="lblNome" value="Nome" />
+						<p:inputText id="txtNome" label="lblNome"/>
+						
+						<h:outputLabel id="lblEmail" value="E-mail" />
+						<p:inputText id="txtemail" label="lblEmail"/>
+						
+						<h:outputLabel id="lblTelefone" value="Telefone" />
+						<p:inputText id="txtTelefone" label="lblTelefone"/>
+						
+						<h:outputLabel id="lblResponsavel" value="Responsável" />
+						<p:inputText id="txtResponsavel" label="lblResponsavel"/>
+						
+						<h:outputLabel id="lblDoctoIdentificacao" value="Docto. Identificação" />
+						<p:inputText id="txtdoctoIdentificacao" label="lblDoctoIdentificacao"/>
+						
+						<f:facet name="footer">
+							<p:commandButton value="OK" id="cbOK" onsuccess="PF('dlg1').hide()"/>
+							<p:commandButton value="Cancelar" id="cbCancelar" onsuccess="PF('dlg1').hide()"/>	
+						</f:facet>
+					</h:panelGrid>
+				</h:form>
+			</p:dialog>
+			
 		</body>
 </html>
