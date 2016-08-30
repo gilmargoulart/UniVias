@@ -1,9 +1,12 @@
 package ejb;
 
+import java.util.List;
+
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import model.Inquilino;
 
@@ -26,7 +29,31 @@ public class InquilinoBean implements InquilinoBeanLocal {
 
 	@Override
 	public void save(Inquilino inquilino) {
-		// TODO Auto-generated method stub
-		
+		//Verificar se o objeto já existe
+		if (em.find(Inquilino.class, inquilino.getId()) == null){
+			//Inserir novo...
+			em.persist(inquilino);
+		} else {
+			//Salvar existente...
+			em.merge(inquilino);
+		}
+	}
+
+	@Override
+	public void remove(Inquilino inquilino) {
+		em.remove(inquilino);
+	}
+
+	@Override
+	public List<Inquilino> getAll() {
+		Query q = em.createNamedQuery("getAllInquilino");
+		return q.getResultList();
+	}
+
+	@Override
+	public List<Inquilino> getTop10() {
+		Query q = em.createNamedQuery("getAllInquilino");
+		q.setMaxResults(10);
+		return q.getResultList();
 	}
 }

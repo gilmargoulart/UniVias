@@ -11,7 +11,7 @@
 		<body>
 			<h:form id="formInquilino">
 				<p:panel header="Manter Inquilino">
-					<p:dataTable>
+					<p:dataTable value="#{crtinquilino.getAll()}">
 						<f:facet name="header">Lista de inquilinos</f:facet>
 						<p:column>
 							<f:facet name="header">Ação de usuário</f:facet>
