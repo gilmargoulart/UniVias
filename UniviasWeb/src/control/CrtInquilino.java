@@ -12,8 +12,17 @@ import model.Inquilino;
 public class CrtInquilino {
 	
 	@EJB
-	private InquilinoBeanLocal inquilinoBean; 
+	private InquilinoBeanLocal inquilinoBean;
+	private Inquilino model;
 	
+	public Inquilino getModel() {
+		return model;
+	}
+
+	public void setModel(Inquilino model) {
+		this.model = model;
+	}
+
 	public List<Inquilino> getAll(){
 		return inquilinoBean.getAll();
 	}
