@@ -15,6 +15,10 @@ public class CrtInquilino {
 	private InquilinoBeanLocal inquilinoBean;
 	private Inquilino model;
 	
+	public CrtInquilino(){
+		model = new Inquilino();
+	}
+	
 	public Inquilino getModel() {
 		return model;
 	}
@@ -27,4 +31,12 @@ public class CrtInquilino {
 		return inquilinoBean.getAll();
 	}
 	
+	public void create(){
+		model = new Inquilino();
+	}
+	
+	public void save(){
+		System.out.println(model.getEmail());
+		inquilinoBean.save(model);
+	}
 }

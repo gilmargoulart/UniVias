@@ -14,7 +14,7 @@
 				<p:dataTable
 					value="#{crtinquilino.getAll()}"
 					var="inquilino" selectionMode="single"
-					selection="#{crtinquilino.model}" rowKey="#{Inquilino.id}">
+					selection="#{crtinquilino.model}" rowKey="#{crtinquilino.model.id}">
 					
 					<f:facet name="header">ListadeInquilinos</f:facet>
 					<p:column>

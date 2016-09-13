@@ -9,15 +9,20 @@
 			<title>Manter Inquilinos</title>
 		</h:head>
 		<body>
-			<h:form id="formInquilino">
+			<h:form id="frmInquilino">
 				<p:panel header="Manter Inquilino">
-					<p:dataTable value="#{crtinquilino.getAll()}"
-					selection="#{crtinquilino.model}"
-					var="umInquilino">
+					<p:dataTable
+						id="tbDadosInquilino"
+						value="#{crtinquilino.getAll()}"
+						selection="#{crtinquilino.model}"
+						selectionMode="single"
+						var="umInquilino"
+						rowKey="#{umInquilino.id}">
+						
 						<f:facet name="header">Lista de inquilinos</f:facet>
 						<p:column>
 							<f:facet name="header">Ação de usuário</f:facet>
-							<h:commandButton>Botão</h:commandButton>
+							<h:commandButton action="PF('dlg1').show()">Botão</h:commandButton>
 						</p:column>
 						<p:column>
 							<f:facet name="header">Nome</f:facet>
@@ -41,7 +46,13 @@
 								value="Incluir"
 								id="cbIncluir"
 								onsuccess="PF('dlg1').show()"
-								action="crtinquilino.createNewInquilino()"/>
+								update=":frmInquilino"
+								action="#{crtinquilino.create()}"/>
+							<p:commandButton
+								value="Alterar"
+								id="cbAlterar"
+								onsuccess="PF('dlg1').show()"
+								update=":frmInquilino"/>
 						</f:facet>
 					</p:dataTable>
 				</p:panel>
@@ -59,40 +70,46 @@
 						<p:inputText
 							id="txtNome"
 							label="lblNome"
-							value="crtInquilino.model.nome"/>
+							value="#{crtinquilino.model.nome}"/>
 						
 						<h:outputLabel id="lblEmail" value="E-mail" />
 						<p:inputText
 							id="txtemail"
 							label="lblEmail"
-							value="crtInquilino.model.email"/>
+							value="#{crtinquilino.model.email}"/>
 						
 						<h:outputLabel id="lblTelefone" value="Telefone" />
 						<p:inputText
 							id="txtTelefone"
 							label="lblTelefone"
-							value="crtInquilino.model.telefone"/>
+							value="#{crtinquilino.model.telefone}"/>
 						
 						<h:outputLabel id="lblResponsavel" value="Responsável" />
 						<p:inputText
 							id="txtResponsavel"
 							label="lblResponsavel"
-							value="crtInquilino.model.responsavel"/>
+							value="#{crtinquilino.model.responsavel}"/>
 						
 						<h:outputLabel id="lblDoctoIdentificacao" value="Docto. Identificação" />
 						<p:inputText
 							id="txtdoctoIdentificacao"
 							label="lblDoctoIdentificacao"
-							value="crtInquilino.model.doctoIdentificacao"/>
+							value="#{crtinquilino.model.doctoIdentificacao}"/>
 						
 						<f:facet name="footer">
 							<p:commandButton
 								value="OK"
 								id="cbOK"
 								onsuccess="PF('dlg1').hide()"
-								action="crtinquilino.save()"
-								update=":formTable"/>
-							<p:commandButton value="Cancelar" id="cbCancelar" onsuccess="PF('dlg1').hide()"/>	
+								action="#{crtinquilino.save()}"
+								update=":frmInquilino:tbDadosInquilino"
+								/>
+							<p:commandButton
+								value="Cancelar"
+								id="cbCancelar"
+								onsuccess="PF('dlg1').hide()"
+								action="#{crtinquilino.create()}"
+								update=":frmInquilino:tbDadosInquilino"/>	
 						</f:facet>
 					</h:panelGrid>
 				</h:form>
