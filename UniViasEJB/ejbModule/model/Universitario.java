@@ -8,8 +8,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import exemplo.GenericObject;
+
 @Entity
-public class Universitario {
+public class Universitario implements GenericObject<Universitario>{
 	
 	@ManyToOne
 	@JoinColumn
@@ -22,6 +24,9 @@ public class Universitario {
 	@Column(length = 120)
 	private String nome;
 	
+	public Universitario(){
+		
+	}
 	
 	public Inquilino getInquilino() {
 		return inquilino;
@@ -45,5 +50,10 @@ public class Universitario {
 	
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	@Override
+	public Universitario getModel() {
+		return new Universitario();
 	}
 }
