@@ -33,7 +33,7 @@ public class CrtCRUD<T> {
 	
 	public void create(){
 		//model = new T();
-		model.
+		//model.
 	}
 	
 	public void save(){

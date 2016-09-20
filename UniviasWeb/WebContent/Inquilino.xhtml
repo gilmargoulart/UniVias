@@ -16,38 +16,40 @@
 						value="#{crtinquilino.getAll()}"
 						selection="#{crtinquilino.model}"
 						selectionMode="single"
-						var="umInquilino"
-						rowKey="#{umInquilino.id}">
+						var="vInquilino"
+						rowKey="#{vInquilino.id}">
 						
 						<f:facet name="header">Lista de inquilinos</f:facet>
+						<!--
 						<p:column>
 							<f:facet name="header">Ação de usuário</f:facet>
 							<h:commandButton action="PF('dlg1').show()">Botão</h:commandButton>
 						</p:column>
+						-->
 						<p:column>
 							<f:facet name="header">Nome</f:facet>
-							<h:outputText value="#{umInquilino.nome}" />
+							<h:outputText value="#{vInquilino.nome}" />
 						</p:column>
 						<p:column>
 							<f:facet name="header">E-mail</f:facet>
-							<h:outputText value="#{umInquilino.email}"/>
+							<h:outputText value="#{vInquilino.email}"/>
 						</p:column>
 						<p:column>
 							<f:facet name="header">Telefone</f:facet>
-							<h:outputText value="#{umInquilino.telefone}"/>
+							<h:outputText value="#{vInquilino.telefone}"/>
 						</p:column>
 						<p:column>
 							<f:facet name="header">Responsável</f:facet>
-							<h:outputText value="#{umInquilino.responsavel}"/>
+							<h:outputText value="#{vInquilino.responsavel}"/>
 						</p:column>
 						
 						<f:facet name="footer">
 							<p:commandButton
 								value="Incluir"
 								id="cbIncluir"
+								action="#{crtinquilino.create()}"
 								onsuccess="PF('dlg1').show()"
-								update=":frmInquilino"
-								action="#{crtinquilino.create()}"/>
+								update=":frmInquilino"/>
 							<p:commandButton
 								value="Alterar"
 								id="cbAlterar"
@@ -100,20 +102,19 @@
 							<p:commandButton
 								value="OK"
 								id="cbOK"
-								onsuccess="PF('dlg1').hide()"
 								action="#{crtinquilino.save()}"
+								onsuccess="PF('dlg1').hide()"
 								update=":frmInquilino:tbDadosInquilino"
 								/>
 							<p:commandButton
 								value="Cancelar"
 								id="cbCancelar"
-								onsuccess="PF('dlg1').hide()"
 								action="#{crtinquilino.create()}"
+								onsuccess="PF('dlg1').hide()"
 								update=":frmInquilino:tbDadosInquilino"/>	
 						</f:facet>
 					</h:panelGrid>
 				</h:form>
 			</p:dialog>
-			
 		</body>
 </html>
