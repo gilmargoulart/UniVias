@@ -2,11 +2,12 @@ package ejb;
 
 import java.util.List;
 
-import javax.ejb.LocalBean;
+import javax.ejb.Local;
+
 
 import model.Financeiro;
 
-@LocalBean
+@Local
 public interface FinanceiroBeanLocal {
 
 	void save(Financeiro financeiro);

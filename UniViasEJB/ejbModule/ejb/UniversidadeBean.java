@@ -8,12 +8,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import model.Localizacao;
+
+import model.Universidade;
 
 @Stateless
 @LocalBean
 
-public class LocalizacaoBean implements LocalizacaoBeanLocal {
+public class UniversidadeBean implements UniversidadeBeanLocal {
 	
 	@PersistenceContext(name="UniviasContext")
 	private EntityManager em;
@@ -21,38 +22,38 @@ public class LocalizacaoBean implements LocalizacaoBeanLocal {
     /**
      * Default constructor. 
      */
-    public LocalizacaoBean() {
+    public UniversidadeBean() {
         // TODO Auto-generated constructor stub
     }
 
 	@Override
-	public void save(Localizacao localizacao) {
+	public void save(Universidade universidade) {
 		//Verificar se o objeto já existe
-		if (em.find(Localizacao.class, localizacao.getId()) == null){
+		if (em.find(Universidade.class, universidade.getId()) == null){
 			//Inserir novo...
-			em.persist(localizacao);
+			em.persist(universidade);
 		} else {
 			//Salvar existente...
-			em.merge(localizacao);
+			em.merge(universidade);
 		}
 	}
 
 	@Override
-	public void remove(Localizacao localizacao) {
-		em.remove(localizacao);
+	public void remove(Universidade universidade) {
+		em.remove(universidade);
 	}
 
 	@Override
-	public List<Localizacao> getAll() {
-		Query q = em.createNamedQuery("getAllLocalizacao");
+	public List<Universidade> getAll() {
+		Query q = em.createNamedQuery("getAllUniversidade");
 		return q.getResultList();
 	}
 
-	/*@Override
-	public List<Inquilino> getTop10() {
-		Query q = em.createNamedQuery("getAllInquilino");
+	@Override
+	public List<Universidade> getTop10() {
+		Query q = em.createNamedQuery("getAllUniversidade");
 		q.setMaxResults(10);
 		return q.getResultList();
-	}*/
+	}
 
 }

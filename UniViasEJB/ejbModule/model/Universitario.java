@@ -7,8 +7,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 import exemplo.GenericObject;
+
+@NamedQueries({
+	@NamedQuery(
+		name = "getAllUniversitario"
+		,query = "select n from Universitario n"
+	)
+})
 
 @Entity
 public class Universitario implements GenericObject<Universitario>{

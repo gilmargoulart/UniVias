@@ -8,12 +8,15 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import model.Localizacao;
+import model.Transporte;
+
+
 
 @Stateless
 @LocalBean
 
-public class LocalizacaoBean implements LocalizacaoBeanLocal {
+public class TransporteBean implements TransporteBeanLocal {
+	
 	
 	@PersistenceContext(name="UniviasContext")
 	private EntityManager em;
@@ -21,38 +24,38 @@ public class LocalizacaoBean implements LocalizacaoBeanLocal {
     /**
      * Default constructor. 
      */
-    public LocalizacaoBean() {
+    public TransporteBean() {
         // TODO Auto-generated constructor stub
     }
 
 	@Override
-	public void save(Localizacao localizacao) {
+	public void save(Transporte transporte) {
 		//Verificar se o objeto já existe
-		if (em.find(Localizacao.class, localizacao.getId()) == null){
+		if (em.find(Transporte.class, transporte.getId()) == null){
 			//Inserir novo...
-			em.persist(localizacao);
+			em.persist(transporte);
 		} else {
 			//Salvar existente...
-			em.merge(localizacao);
+			em.merge(transporte);
 		}
 	}
 
 	@Override
-	public void remove(Localizacao localizacao) {
-		em.remove(localizacao);
+	public void remove(Transporte transporte) {
+		em.remove(transporte);
 	}
 
 	@Override
-	public List<Localizacao> getAll() {
-		Query q = em.createNamedQuery("getAllLocalizacao");
+	public List<Transporte> getAll() {
+		Query q = em.createNamedQuery("getAllTransporte");
 		return q.getResultList();
 	}
 
-	/*@Override
-	public List<Inquilino> getTop10() {
-		Query q = em.createNamedQuery("getAllInquilino");
+	@Override
+	public List<Transporte> getTop10() {
+		Query q = em.createNamedQuery("getAllTransporte");
 		q.setMaxResults(10);
 		return q.getResultList();
-	}*/
+	}
 
 }

@@ -15,7 +15,7 @@ public interface ContratoBeanLocal {
 
 	List<Contrato> getAll();
 
-	List<Contrato> getTop10();
+
 	
 
 }

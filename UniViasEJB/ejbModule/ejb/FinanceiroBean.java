@@ -43,13 +43,13 @@ public class FinanceiroBean implements FinanceiroBeanLocal {
 
 	@Override
 	public List<Financeiro> getAll() {
-		Query q = em.createNamedQuery("getAllInquilino");
+		Query q = em.createNamedQuery("getAllFinanceiro");
 		return q.getResultList();
 	}
 
 	@Override
 	public List<Financeiro> getTop10() {
-		Query q = em.createNamedQuery("getAllInquilino");
+		Query q = em.createNamedQuery("getAllFinanceiro");
 		q.setMaxResults(10);
 		return q.getResultList();
 	}

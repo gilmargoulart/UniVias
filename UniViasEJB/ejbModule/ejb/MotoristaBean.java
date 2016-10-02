@@ -8,12 +8,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import model.Localizacao;
+import model.Motorista;
+
 
 @Stateless
 @LocalBean
 
-public class LocalizacaoBean implements LocalizacaoBeanLocal {
+public class MotoristaBean implements MotoristaBeanLocal {
 	
 	@PersistenceContext(name="UniviasContext")
 	private EntityManager em;
@@ -21,30 +22,30 @@ public class LocalizacaoBean implements LocalizacaoBeanLocal {
     /**
      * Default constructor. 
      */
-    public LocalizacaoBean() {
+    public MotoristaBean() {
         // TODO Auto-generated constructor stub
     }
 
 	@Override
-	public void save(Localizacao localizacao) {
+	public void save(Motorista motorista) {
 		//Verificar se o objeto já existe
-		if (em.find(Localizacao.class, localizacao.getId()) == null){
+		if (em.find(Motorista.class, motorista.getId()) == null){
 			//Inserir novo...
-			em.persist(localizacao);
+			em.persist(motorista);
 		} else {
 			//Salvar existente...
-			em.merge(localizacao);
+			em.merge(motorista);
 		}
 	}
 
 	@Override
-	public void remove(Localizacao localizacao) {
-		em.remove(localizacao);
+	public void remove(Motorista motorista) {
+		em.remove(motorista);
 	}
 
 	@Override
-	public List<Localizacao> getAll() {
-		Query q = em.createNamedQuery("getAllLocalizacao");
+	public List<Motorista> getAll() {
+		Query q = em.createNamedQuery("getAllMotorista");
 		return q.getResultList();
 	}
 
