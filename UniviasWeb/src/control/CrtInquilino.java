@@ -12,7 +12,7 @@ import model.Inquilino;
 public class CrtInquilino {
 	
 	@EJB
-	private InquilinoBeanLocal inquilinoBean;
+	private InquilinoBeanLocal bean;
 	private Inquilino model;
 	
 	public CrtInquilino(){
@@ -28,7 +28,7 @@ public class CrtInquilino {
 	}
 
 	public List<Inquilino> getAll(){
-		return inquilinoBean.getAll();
+		return bean.getAll();
 	}
 	
 	public void create(){
@@ -36,7 +36,6 @@ public class CrtInquilino {
 	}
 	
 	public void save(){
-		System.out.println(model.getEmail());
-		inquilinoBean.save(model);
+		bean.save(model);
 	}
 }
