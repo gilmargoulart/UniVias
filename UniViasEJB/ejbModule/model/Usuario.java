@@ -2,6 +2,8 @@ package model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -9,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+
+import enums.NivelPermissao;
 
 @NamedQueries({
 	@NamedQuery(
@@ -36,7 +40,10 @@ public class Usuario {
 	
 	@Column(length = 128)
 	private String senha;
-
+	
+	@Enumerated(EnumType.ORDINAL)
+	private NivelPermissao permissao;
+	
 	public Inquilino getInquilino() {
 		return inquilino;
 	}
@@ -75,6 +82,14 @@ public class Usuario {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public NivelPermissao getPermissao() {
+		return this.permissao;
+	}
+
+	public void setPermissao(NivelPermissao permissao) {
+		this.permissao = permissao;
 	}
 	
 }
