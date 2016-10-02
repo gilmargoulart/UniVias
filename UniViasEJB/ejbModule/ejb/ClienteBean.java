@@ -1,5 +1,6 @@
 package ejb;
 
+import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -8,6 +9,7 @@ import javax.persistence.PersistenceContext;
  * Session Bean implementation class ClienteBean
  */
 @Stateless
+@LocalBean
 public class ClienteBean implements ClienteBeanLocal {
 	
 	//Conexão.
