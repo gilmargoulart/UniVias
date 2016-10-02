@@ -10,12 +10,12 @@ import model.Financeiro;
 @Local
 public interface FinanceiroBeanLocal {
 
-	void save(Financeiro financeiro);
+	public void save(Financeiro financeiro);
 
-	void remove(Financeiro financeiro);
+	public void remove(Financeiro financeiro);
 
-	List<Financeiro> getAll();
+	public List<Financeiro> getAll();
 
-	List<Financeiro> getTop10();
+	public List<Financeiro> getTop10();
 
 }

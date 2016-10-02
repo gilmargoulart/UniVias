@@ -2,11 +2,17 @@ package model;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 
 @Embeddable
 public class Geolocalizacao {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
 	
 	@Column
 	private float geoX;
@@ -26,5 +32,11 @@ public class Geolocalizacao {
 	public void setGeoY(float geoY) {
 		this.geoY = geoY;
 	}
+	public long getId() {
+		return id;
+	}
 
+	public void setId(long id) {
+		this.id = id;
+	}
 }

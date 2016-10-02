@@ -10,8 +10,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
-import exemplo.GenericObject;
-
 @NamedQueries({
 	@NamedQuery(
 		name = "getAllUniversitario"
@@ -20,7 +18,7 @@ import exemplo.GenericObject;
 })
 
 @Entity
-public class Universitario implements GenericObject<Universitario>{
+public class Universitario {
 	
 	@ManyToOne
 	@JoinColumn
@@ -59,10 +57,5 @@ public class Universitario implements GenericObject<Universitario>{
 	
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	@Override
-	public Universitario getModel() {
-		return new Universitario();
 	}
 }

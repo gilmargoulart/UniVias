@@ -1,7 +1,14 @@
 package ejb;
 
+import java.util.List;
+import model.Geolocalizacao;
+
 public interface GeolocalizacaoBeanLocal {
 
-	void save(GeolocalizacaoBean geolocalizacao);
+	public void save(Geolocalizacao geolocalizacao);
+
+	public void remove(Geolocalizacao geolocalizacao);
+
+	public List<Geolocalizacao> getAll();
 
 }
