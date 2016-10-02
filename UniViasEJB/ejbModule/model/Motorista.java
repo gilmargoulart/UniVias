@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -47,6 +49,10 @@ public class Motorista {
 	
 	@Temporal(value = TemporalType.DATE)
 	private Date demissao;
+
+	@Column(length = 1, columnDefinition = "char(1)")
+	@Enumerated(EnumType.STRING)
+	private Status status;
 	
 	public Inquilino getInquilino() {
 		return inquilino;
@@ -111,7 +117,4 @@ public class Motorista {
 	public void setStatus(Status status) {
 		this.status = status;
 	}
-
-	private Status status;
-	
 }
