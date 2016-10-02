@@ -13,7 +13,6 @@ import model.Setor;
 
 @Stateless
 @LocalBean
-
 public class SetorBean implements SetorBeanLocal {
 	
 	@PersistenceContext(name="UniviasContext")

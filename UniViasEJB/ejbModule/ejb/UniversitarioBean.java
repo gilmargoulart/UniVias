@@ -12,7 +12,6 @@ import model.Universitario;
 
 @Stateless
 @LocalBean
-
 public class UniversitarioBean implements UniversitarioBeanLocal {
 	
 	@PersistenceContext(name="UniviasContext")

@@ -12,7 +12,6 @@ import model.Veiculo;
 
 @Stateless
 @LocalBean
-
 public class VeiculoBean implements VeiculoBeanLocal {
 
 	@PersistenceContext(name = "UniviasContext")

@@ -5,7 +5,15 @@ import javax.persistence.Embeddable;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
+@NamedQueries({
+	@NamedQuery(
+		name = "getAllGeolocalizacao"
+		,query = "select g from Geolocalizacao g"
+	)
+})
 
 @Embeddable
 public class Geolocalizacao {

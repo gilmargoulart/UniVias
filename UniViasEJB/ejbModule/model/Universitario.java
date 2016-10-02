@@ -13,7 +13,7 @@ import javax.persistence.NamedQuery;
 @NamedQueries({
 	@NamedQuery(
 		name = "getAllUniversitario"
-		,query = "select n from Universitario n"
+		,query = "select u from Universitario u"
 	)
 })
 

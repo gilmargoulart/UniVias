@@ -12,7 +12,6 @@ import model.Localizacao;
 
 @Stateless
 @LocalBean
-
 public class LocalizacaoBean implements LocalizacaoBeanLocal {
 	
 	@PersistenceContext(name="UniviasContext")
@@ -47,12 +46,5 @@ public class LocalizacaoBean implements LocalizacaoBeanLocal {
 		Query q = em.createNamedQuery("getAllLocalizacao");
 		return q.getResultList();
 	}
-
-	/*@Override
-	public List<Inquilino> getTop10() {
-		Query q = em.createNamedQuery("getAllInquilino");
-		q.setMaxResults(10);
-		return q.getResultList();
-	}*/
 
 }

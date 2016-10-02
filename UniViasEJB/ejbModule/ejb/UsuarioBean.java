@@ -13,7 +13,6 @@ import model.Usuario;
 
 @Stateless
 @LocalBean
-
 public class UsuarioBean implements UsuarioBeanLocal {
 	
 	

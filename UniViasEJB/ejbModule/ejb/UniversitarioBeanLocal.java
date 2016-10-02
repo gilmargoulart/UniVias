@@ -7,13 +7,12 @@ import javax.ejb.Local;
 import model.Universitario;
 
 @Local
-
 public interface UniversitarioBeanLocal {
 
-	void save(Universitario universitario);
+	public void save(Universitario universitario);
 
-	void remove(Universitario universitario);
+	public void remove(Universitario universitario);
 
-	List<Universitario> getAll();
+	public List<Universitario> getAll();
 
 }

@@ -7,13 +7,12 @@ import javax.ejb.Local;
 import model.Usuario;
 
 @Local
-
 public interface UsuarioBeanLocal {
 
-	void save(Usuario usuraio);
+	public void save(Usuario usuraio);
 
-	void remove(Usuario usuario);
+	public void remove(Usuario usuario);
 
-	List<Usuario> getAll();
+	public List<Usuario> getAll();
 
 }

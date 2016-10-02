@@ -7,13 +7,12 @@ import javax.ejb.Local;
 import model.Veiculo;
 
 @Local
-
 public interface VeiculoBeanLocal {
 
-	void save(Veiculo veiculo);
+	public void save(Veiculo veiculo);
 
-	void remove(Veiculo veiculo);
+	public void remove(Veiculo veiculo);
 
-	List<Veiculo> getAll();
+	public List<Veiculo> getAll();
 
 }

@@ -13,6 +13,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import enums.TipoDocumentoFinanceiro;
+
 @NamedQueries({
 	@NamedQuery(
 		name = "getAllFinanceiro"
@@ -36,7 +38,7 @@ public class Financeiro {
 	 * 	- A pagar
 	 * 	- A receber
 	 */
-	private short tipo;
+	private TipoDocumentoFinanceiro tipo;
 	
 	/**
 	 * Número do documento
@@ -84,11 +86,11 @@ public class Financeiro {
 		this.id = id;
 	}
 
-	public short getTipo() {
+	public TipoDocumentoFinanceiro getTipo() {
 		return tipo;
 	}
 
-	public void setTipo(short tipo) {
+	public void setTipo(TipoDocumentoFinanceiro tipo) {
 		this.tipo = tipo;
 	}
 

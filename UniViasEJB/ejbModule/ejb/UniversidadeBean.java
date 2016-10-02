@@ -13,7 +13,6 @@ import model.Universidade;
 
 @Stateless
 @LocalBean
-
 public class UniversidadeBean implements UniversidadeBeanLocal {
 	
 	@PersistenceContext(name="UniviasContext")

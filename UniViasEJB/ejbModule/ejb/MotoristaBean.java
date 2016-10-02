@@ -13,7 +13,6 @@ import model.Motorista;
 
 @Stateless
 @LocalBean
-
 public class MotoristaBean implements MotoristaBeanLocal {
 	
 	@PersistenceContext(name="UniviasContext")

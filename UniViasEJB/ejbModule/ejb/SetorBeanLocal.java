@@ -9,12 +9,12 @@ import model.Setor;
 @Local
 public interface SetorBeanLocal {
 
-	void save(Setor setor);
+	public void save(Setor setor);
 
-	void remove(Setor setor);
+	public void remove(Setor setor);
 
-	List<Setor> getAll();
+	public List<Setor> getAll();
 
-	List<Setor> getTop10();
+	public List<Setor> getTop10();
 
 }

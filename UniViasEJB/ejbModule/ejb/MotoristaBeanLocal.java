@@ -10,10 +10,10 @@ import model.Motorista;
 @Local
 public interface MotoristaBeanLocal {
 
-	void save(Motorista motorista);
+	public void save(Motorista motorista);
 
-	void remove(Motorista motorista);
+	public void remove(Motorista motorista);
 
-	List<Motorista> getAll();
+	public List<Motorista> getAll();
 
 }

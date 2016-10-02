@@ -7,15 +7,14 @@ import javax.ejb.Local;
 import model.Universidade;
 
 @Local
-
 public interface UniversidadeBeanLocal {
 
-	void save(Universidade universidade);
+	public void save(Universidade universidade);
 
-	void remove(Universidade universidade);
+	public void remove(Universidade universidade);
 
-	List<Universidade> getAll();
+	public List<Universidade> getAll();
 
-	List<Universidade> getTop10();
+	public List<Universidade> getTop10();
 
 }

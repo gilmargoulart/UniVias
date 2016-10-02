@@ -13,7 +13,7 @@ import javax.persistence.NamedQuery;
 @NamedQueries({
 	@NamedQuery(
 		name = "getAllUsuario"
-		,query = "select r from Usuario r"
+		,query = "select u from Usuario u"
 	)
 })
 
