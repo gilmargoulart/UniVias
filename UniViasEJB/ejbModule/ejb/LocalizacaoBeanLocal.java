@@ -10,10 +10,10 @@ import model.Localizacao;
 
 public interface LocalizacaoBeanLocal {
 
-	void save(Localizacao localizacao);
+	public void save(Localizacao localizacao);
 
-	void remove(Localizacao localizacao);
+	public void remove(Localizacao localizacao);
 
-	List<Localizacao> getAll();
+	public List<Localizacao> getAll();
 
 }
