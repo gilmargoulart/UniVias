@@ -10,6 +10,6 @@
 		
 		<%= new Date() %>
 		<!-- Sinal de igual (=) é o mesmo que um System.out.println() -->
-		
+		<p>APP JAVA - JSP</p>
 	</body>
 </html>
