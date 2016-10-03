@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+  	  xmlns:p="http://primefaces.org/ui">
+		<h:head>
+			<meta charset="UTF-8"/>
+			<title>Manter Financeiro</title>
+		</h:head>
+		<body>
+			<h:form id="frmFinanceiro">
+				<p:panel header="Manter Financeiro">
+					<p:dataTable
+						id="tbDadosfinanceiro"
+						value="#{crtfinanceiro.getAll()}"
+						selection="#{crtfinanceiro.model}"
+						selectionMode="single"
+						var="vFinanceiro"
+						rowKey="#{vFinanceiro.id}">
+						
+						<f:facet name="header">Lista Financeiro</f:facet>
+						<!--
+						<p:column>
+							<f:facet name="header">Ação de usuário</f:facet>
+							<h:commandButton action="PF('dlg1').show()">Botão</h:commandButton>
+						</p:column>
+						-->
+						<p:column>
+							<f:facet name="header">Desconto</f:facet>
+							<h:outputText value="#{vFinanceiro.desconto}" />
+						</p:column>
+						<p:column>
+							<f:facet name="header">Juros</f:facet>
+							<h:outputText value="#{vFinanceiro.juros}"/>
+						</p:column>
+						<p:column>
+							<f:facet name="header">Numero Documento</f:facet>
+							<h:outputText value="#{vFinanceiro.nroDocumento}"/>
+						</p:column>
+						<p:column>
+							<f:facet name="header">Origem</f:facet>
+							<h:outputText value="#{vFinanceiro.origem}"/>
+						</p:column>
+						<p:column>
+							<f:facet name="header">Tipo</f:facet>
+							<h:outputText value="#{vFinanceiro.tipo}"/>
+						</p:column>
+						<p:column>
+							<f:facet name="header">Valor</f:facet>
+							<h:outputText value="#{vFinanceiro.valor}"/>
+						</p:column>
+						<p:column>
+							<f:facet name="header">Vencimento</f:facet>
+							<h:outputText value="#{vFinanceiro.vencimento}"/>
+						</p:column>
+						
+						<f:facet name="footer">
+							<p:commandButton
+								value="Incluir"
+								id="cbIncluir"
+								action="#{crtfinanceiro.create()}"
+								onsuccess="PF('dlg1').show()"
+								update=":frmFinanceiro"/>
+							<p:commandButton
+								value="Alterar"
+								id="cbAlterar"
+								onsuccess="PF('dlg1').show()"
+								update=":frmFinanceiro"/>
+						</f:facet>
+					</p:dataTable>
+				</p:panel>
+			</h:form>
+			
+			<!--  -->
+			
+			<p:dialog width="500px" height="300px" id="detailDialog"
+				modal="true"
+				header="Detalhe do Financeiro"
+				widgetVar="dlg1">
+				<h:form id="form">
+					<h:panelGrid id="formDetail" columns="2">
+					
+						<h:outputLabel id="lblValor" value="Valor" />
+						<p:inputText
+							id="txtValor"
+							label="lblValor"
+							value="#{crtfinanceiro.model.valor}"/>
+						
+						<h:outputLabel id="lblTipo" value="Tipo" />
+						<p:inputText
+							id="txttipo"
+							label="lblTipo"
+							value="#{crtfinanceiro.model.tipo}"/>
+						
+						<h:outputLabel id="lblVencimento" value="Vencimento" />
+						<p:inputText
+							id="txtVencimento"
+							label="lblVencimento"
+							value="#{crtfinanceiro.model.vencimento}"/>
+						
+						<h:outputLabel id="lblNumero Documento" value="Numero Documento" />
+						<p:inputText
+							id="txtNumero Documento"
+							label="lblNumero Documento"
+							value="#{crtfinanceiro.model.nroDocumento}"/>
+						
+						<h:outputLabel id="lblOrigem" value="Origem" />
+						<p:inputText
+							id="txtOrigem"
+							label="lblOrigem"
+							value="#{crtfinanceiro.model.origem}"/>
+							
+						<h:outputLabel id="lblJuros" value="Juros" />
+						<p:inputText
+							id="txtJuros"
+							label="lblJuros"
+							value="#{crtfinanceiro.model.juros}"/>
+							
+						<h:outputLabel id="lblDesconto" value="Desconto" />
+						<p:inputText
+							id="txtDesconto"
+							label="lblDesconto"
+							value="#{crtfinanceiro.model.desconto}"/>
+						
+						<f:facet name="footer">
+							<p:commandButton
+								value="OK"
+								id="cbOK"
+								action="#{crtfinanceiro.save()}"
+								onsuccess="PF('dlg1').hide()"
+								update=":frmFinanceiro:tbDadosFinanceiro"
+								/>
+							<p:commandButton
+								value="Cancelar"
+								id="cbCancelar"
+								action="#{crtfinanceiro.create()}"
+								onsuccess="PF('dlg1').hide()"
+								update=":frmFinanceiro:tbDadosFinanceiro"/>	
+						</f:facet>
+					</h:panelGrid>
+				</h:form>
+			</p:dialog>
+		</body>
+</html>

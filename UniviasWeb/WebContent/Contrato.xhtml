@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+  	  xmlns:p="http://primefaces.org/ui">
+		<h:head>
+			<meta charset="UTF-8"/>
+			<title>Manter Inquilinos</title>
+		</h:head>
+		<body>
+			<h:form id="frmContrato">
+				<p:panel header="Manter Contrato">
+					<p:dataTable
+						id="tbDadosContrato"
+						value="#{crtcontrato.getAll()}"
+						selection="#{crtcontrato.model}"
+						selectionMode="single"
+						var="vContrato"
+						rowKey="#{vContrato.id}">
+						
+						<f:facet name="header">Lista de Contratos</f:facet>
+						<!--
+						<p:column>
+							<f:facet name="header">Ação de usuário</f:facet>
+							<h:commandButton action="PF('dlg1').show()">Botão</h:commandButton>
+						</p:column>
+						-->
+						<p:column>
+							<f:facet name="header">Titulo</f:facet>
+							<h:outputText value="#{vContrato.titulo}"/>
+						</p:column>
+						
+						<p:column>
+							<f:facet name="header">Contrato Inicio</f:facet>
+							<h:outputText value="#{vContrato.periodoInicial}" />
+						</p:column>
+						<p:column>
+							<f:facet name="header">Contrato Fim</f:facet>
+							<h:outputText value="#{vContrato.periodoFinal}"/>
+						</p:column>
+						
+						<f:facet name="footer">
+							<p:commandButton
+								value="Incluir"
+								id="cbIncluir"
+								action="#{crtcontrato.create()}"
+								onsuccess="PF('dlg1').show()"
+								update=":frmContrato"/>
+							<p:commandButton
+								value="Alterar"
+								id="cbAlterar"
+								onsuccess="PF('dlg1').show()"
+								update=":frmContrato"/>
+						</f:facet>
+					</p:dataTable>
+				</p:panel>
+			</h:form>
+			
+			<!--  -->
+			
+			<p:dialog width="500px" height="300px" id="detailDialog"
+				modal="true"
+				header="Detalhe do Contrato"
+				widgetVar="dlg1">
+				<h:form id="form">
+					<h:panelGrid id="formDetail" columns="2">
+					
+						<h:outputLabel id="lblTitulo" value="Titulo" />
+						<p:inputText
+							id="txtTitulo"
+							label="lblTitulo"
+							value="#{crtcontrato.model.titulo}"/>						
+					
+						<h:outputLabel id="lblContrato Inicio" value="Contrato Inicio" />
+						<p:inputText
+							id="txtContrato Inicio"
+							label="lblContrato Inicio"
+							value="#{crtcontrato.model.periodoInicial}"/>
+						
+						<h:outputLabel id="lblContrato Fim" value="Contrato Fim" />
+						<p:inputText
+							id="txtContrato Fim"
+							label="lblContrato Fim"
+							value="#{crtcontrato.model.periodoInicial}"/>
+										
+										
+						<f:facet name="footer">
+							<p:commandButton
+								value="OK"
+								id="cbOK"
+								action="#{crtcontrato.save()}"
+								onsuccess="PF('dlg1').hide()"
+								update=":frmContrato:tbDadosContrato"
+								/>
+							<p:commandButton
+								value="Cancelar"
+								id="cbCancelar"
+								action="#{crtcontrato.create()}"
+								onsuccess="PF('dlg1').hide()"
+								update=":frmContrato:tbDadosContrato"/>	
+						</f:facet>
+					</h:panelGrid>
+				</h:form>
+			</p:dialog>
+		</body>
+</html>
