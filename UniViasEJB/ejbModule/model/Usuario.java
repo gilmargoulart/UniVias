@@ -35,7 +35,7 @@ public class Usuario {
 	@Column(length = 120)
 	private String nome;
 	
-	@Column(length = 240)
+	@Column(length = 240, unique = true)
 	private String login;
 	
 	@Column(length = 128)
