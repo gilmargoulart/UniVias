@@ -99,10 +99,10 @@
 							label="lblVencimento"
 							value="#{crtfinanceiro.model.vencimento}"/>
 						
-						<h:outputLabel id="lblNumero Documento" value="Numero Documento" />
+						<h:outputLabel id="lblNumeroDocumento" value="Numero Documento" />
 						<p:inputText
-							id="txtNumero Documento"
-							label="lblNumero Documento"
+							id="txtNumeroDocumento"
+							label="lblNumeroDocumento"
 							value="#{crtfinanceiro.model.nroDocumento}"/>
 						
 						<h:outputLabel id="lblOrigem" value="Origem" />
@@ -129,14 +129,14 @@
 								id="cbOK"
 								action="#{crtfinanceiro.save()}"
 								onsuccess="PF('dlg1').hide()"
-								update=":frmFinanceiro:tbDadosFinanceiro"
+								update=":frmFinanceiro:tbDadosfinanceiro"
 								/>
 							<p:commandButton
 								value="Cancelar"
 								id="cbCancelar"
 								action="#{crtfinanceiro.create()}"
 								onsuccess="PF('dlg1').hide()"
-								update=":frmFinanceiro:tbDadosFinanceiro"/>	
+								update=":frmFinanceiro:tbDadosfinanceiro"/>	
 						</f:facet>
 					</h:panelGrid>
 				</h:form>
