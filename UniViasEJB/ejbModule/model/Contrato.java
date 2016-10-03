@@ -38,7 +38,6 @@ public class Contrato {
 	@Column(length = 500)
 	private String titulo;
 	
-	
 	@Temporal(value = TemporalType.DATE)
 	private Date periodoInicial;
 	
@@ -74,6 +73,12 @@ public class Contrato {
 	}
 	public void setPeriodoFinal(Date periodoFinal) {
 		this.periodoFinal = periodoFinal;
+	}
+	public String getTitulo() {
+		return titulo;
+	}
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
 
 }
