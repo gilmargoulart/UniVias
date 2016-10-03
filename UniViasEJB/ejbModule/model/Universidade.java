@@ -1,5 +1,6 @@
 package model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,7 +34,11 @@ public class Universidade {
 	
 	@Column(length = 120)
 	private String nomeCompleto;
-
+	
+	@ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH})
+	@JoinColumn
+	private Localizacao localizacao;
+	
 	public Inquilino getInquilino() {
 		return inquilino;
 	}

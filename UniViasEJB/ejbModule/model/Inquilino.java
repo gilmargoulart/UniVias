@@ -1,5 +1,6 @@
 package model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -45,6 +46,7 @@ public class Inquilino {
 	 * Documento de identificação.
 	 * Ex: CNPJ, CPF, RG
 	 */
+	@Column(length = 20)
 	private String doctoIdentificacao;
 
 	public long getId() {

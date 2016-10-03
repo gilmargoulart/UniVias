@@ -1,5 +1,6 @@
 package model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,7 +29,15 @@ public class Setor {
 	private long id;
 	
 	private long idRota;
-
+	
+	@ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH})
+	@JoinColumn
+	private Veiculo veiculo;
+	
+	@ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH})
+	@JoinColumn
+	private Motorista motorista;
+	
 	public Inquilino getInquilino() {
 		return inquilino;
 	}
@@ -51,6 +60,22 @@ public class Setor {
 
 	public void setIdRota(long idRota) {
 		this.idRota = idRota;
+	}
+
+	public Veiculo getVeiculo() {
+		return veiculo;
+	}
+
+	public void setVeiculo(Veiculo veiculo) {
+		this.veiculo = veiculo;
+	}
+
+	public Motorista getMotorista() {
+		return motorista;
+	}
+
+	public void setMotorista(Motorista motorista) {
+		this.motorista = motorista;
 	}
 	
 }

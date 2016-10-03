@@ -1,14 +1,20 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 @NamedQueries({
 	@NamedQuery(
@@ -30,6 +36,30 @@ public class Universitario {
 	
 	@Column(length = 120)
 	private String nome;
+	
+	private String email;
+	
+	/**
+	 * CPF, RG
+	 */
+	@Column(length = 20)
+	private String doctoIdentificacao;
+	
+	@Column(length = 20)
+	private String telefone;
+	
+	@ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH})
+	@JoinColumn
+	private Universidade universidade;
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "UNIVERSITARIO_CONTRATOS")
+	private List<Contrato> contratos = new ArrayList<Contrato>();
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "UNIVERSITARIO_LOCALIZACOES")
+	private List<Localizacao> localizacoes = new ArrayList<Localizacao>();
+	
 	
 	public Universitario(){
 		
@@ -57,5 +87,53 @@ public class Universitario {
 	
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public Universidade getUniversidade() {
+		return universidade;
+	}
+
+	public void setUniversidade(Universidade universidade) {
+		this.universidade = universidade;
+	}
+
+	public List<Contrato> getContratos() {
+		return contratos;
+	}
+
+	public void setContratos(List<Contrato> contratos) {
+		this.contratos = contratos;
+	}
+
+	public List<Localizacao> getLocalizacoes() {
+		return localizacoes;
+	}
+
+	public void setLocalizacoes(List<Localizacao> localizacoes) {
+		this.localizacoes = localizacoes;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getDoctoIdentificacao() {
+		return doctoIdentificacao;
+	}
+
+	public void setDoctoIdentificacao(String doctoIdentificacao) {
+		this.doctoIdentificacao = doctoIdentificacao;
+	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
 	}
 }
