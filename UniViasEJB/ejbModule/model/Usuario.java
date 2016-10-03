@@ -42,6 +42,7 @@ public class Usuario {
 	private String senha;
 	
 	@Enumerated(EnumType.ORDINAL)
+	@Column(columnDefinition = "tinyint")
 	private NivelPermissao permissao;
 	
 	public Inquilino getInquilino() {
