@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+  	  xmlns:p="http://primefaces.org/ui">
+		<h:head>
+			<meta charset="UTF-8"/>
+			<title>Manter Universidade</title>
+		</h:head>
+		<body>
+			<h:form id="frmUniversidade">
+				<p:panel header="Manter Universidade">
+					<p:dataTable
+						id="tbDadosuniversidade"
+						value="#{crtuniversidade.getAll()}"
+						selection="#{crtuniversidade.model}"
+						selectionMode="single"
+						var="vUniversidade"
+						rowKey="#{vUniversidade.id}">
+						
+						<f:facet name="header">Lista de Universidade</f:facet>
+						<!--
+						<p:column>
+							<f:facet name="header">Ação de usuário</f:facet>
+							<h:commandButton action="PF('dlg1').show()">Botão</h:commandButton>
+						</p:column>
+						-->
+						<p:column>
+							<f:facet name="header">Nome Completo</f:facet>
+							<h:outputText value="#{vUniversidade.nomeCompleto}" />
+						</p:column>
+						<p:column>
+							<f:facet name="header">Nome Fantasia</f:facet>
+							<h:outputText value="#{vUniversidade.nomeFantasia}"/>
+						</p:column>
+						<p:column>
+							<f:facet name="header">Localização</f:facet>
+							<h:outputText value="#{vUniversidade.localizacao}"/>
+						</p:column>
+						
+						<f:facet name="footer">
+							<p:commandButton
+								value="Incluir"
+								id="cbIncluir"
+								action="#{crtuniversidade.create()}"
+								onsuccess="PF('dlg1').show()"
+								update=":frmUniversidade"/>
+							<p:commandButton
+								value="Alterar"
+								id="cbAlterar"
+								onsuccess="PF('dlg1').show()"
+								update=":frmUniversidade"/>
+						</f:facet>
+					</p:dataTable>
+				</p:panel>
+			</h:form>
+			
+			<!--  -->
+			
+			<p:dialog width="500px" height="300px" id="detailDialog"
+				modal="true"
+				header="Detalhe da Universidade"
+				widgetVar="dlg1">
+				<h:form id="form">
+					<h:panelGrid id="formDetail" columns="2">
+					
+						<h:outputLabel id="lblNomeCompleto" value="Nome Completo" />
+						<p:inputText
+							id="txtNomeCompleto"
+							label="lblNomeCompleto"
+							value="#{crtuniversidade.model.nomeCompleto}"/>
+						
+						<h:outputLabel id="lblNomeFantasia" value="Nome Fantasia" />
+						<p:inputText
+							id="txtNomeFantasia"
+							label="lblNomeFantasia"
+							value="#{crtuniversidade.model.nomeFantasia}"/>
+							
+						<h:outputLabel id="lblLocalizacao" value="Localizacao" />
+						<p:inputText
+							id="txtLocalizacao"
+							label="lblLocalizacao"
+							value="#{crtuniversidade.model.localizacao}"/>
+					
+						<f:facet name="footer">
+							<p:commandButton
+								value="OK"
+								id="cbOK"
+								action="#{crtuniversidade.save()}"
+								onsuccess="PF('dlg1').hide()"
+								update=":frmUniversidade:tbDadosuniversidade"
+								/>
+							<p:commandButton
+								value="Cancelar"
+								id="cbCancelar"
+								action="#{crtuniversidade.create()}"
+								onsuccess="PF('dlg1').hide()"
+								update=":frmUniversidade:tbDadosuniversidade"/>	
+						</f:facet>
+					</h:panelGrid>
+				</h:form>
+			</p:dialog>
+		</body>
+</html>

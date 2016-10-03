@@ -113,11 +113,7 @@
 							label="lblDemissao"
 							value="#{crtmotorista.model.demissao}"/>
 							
-						<h:outputLabel id="lblDesconto" value="Desconto" />
-						<p:inputText
-							id="txtDesconto"
-							label="lblDesconto"
-							value="#{crtfinanceiro.model.desconto}"/>
+						
 						
 						<f:facet name="footer">
 							<p:commandButton
@@ -130,7 +126,7 @@
 							<p:commandButton
 								value="Cancelar"
 								id="cbCancelar"
-								action="#{crtfinanceiro.create()}"
+								action="#{crtmotorista.create()}"
 								onsuccess="PF('dlg1').hide()"
 								update=":frmMotorista:tbDadosmotorista"/>	
 						</f:facet>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+  	  xmlns:p="http://primefaces.org/ui">
+		<h:head>
+			<meta charset="UTF-8"/>
+			<title>Manter Setor</title>
+		</h:head>
+		<body>
+			<h:form id="frmSetor">
+				<p:panel header="Manter Setor">
+					<p:dataTable
+						id="tbDadossetor"
+						value="#{crtsetor.getAll()}"
+						selection="#{crtsetor.model}"
+						selectionMode="single"
+						var="vSetor"
+						rowKey="#{vSetor.id}">
+						
+						<f:facet name="header">Lista de Setores</f:facet>
+						<!--
+						<p:column>
+							<f:facet name="header">Ação de usuário</f:facet>
+							<h:commandButton action="PF('dlg1').show()">Botão</h:commandButton>
+						</p:column>
+						-->
+						<p:column>
+							<f:facet name="header">idRota</f:facet>
+							<h:outputText value="#{vSetor.idRota}" />
+						</p:column>
+						<p:column>
+							<f:facet name="header">Motorista</f:facet>
+							<h:outputText value="#{vSetor.motorista}"/>
+						</p:column>
+						<p:column>
+							<f:facet name="header">Veículo</f:facet>
+							<h:outputText value="#{vSetor.veiculo}"/>
+						</p:column>
+					
+						<f:facet name="footer">
+							<p:commandButton
+								value="Incluir"
+								id="cbIncluir"
+								action="#{crtsetor.create()}"
+								onsuccess="PF('dlg1').show()"
+								update=":frmSetor"/>
+							<p:commandButton
+								value="Alterar"
+								id="cbAlterar"
+								onsuccess="PF('dlg1').show()"
+								update=":frmSetor"/>
+						</f:facet>
+					</p:dataTable>
+				</p:panel>
+			</h:form>
+			
+			<!--  -->
+			
+			<p:dialog width="500px" height="300px" id="detailDialog"
+				modal="true"
+				header="Detalhe do Setor"
+				widgetVar="dlg1">
+				<h:form id="form">
+					<h:panelGrid id="formDetail" columns="2">
+					
+						<h:outputLabel id="lblidRota" value="idRota" />
+						<p:inputText
+							id="txtidRota"
+							label="lblidRota"
+							value="#{crtsetor.model.idRota}"/>
+						
+						<h:outputLabel id="lblMotorista" value="Motorista" />
+						<p:inputText
+							id="txtMotorista"
+							label="lblMotorista"
+							value="#{crtsetor.model.motorista}"/>
+							
+						<h:outputLabel id="lblVeiculo" value="Veiculo" />
+						<p:inputText
+							id="txtVeiculo"
+							label="lblVeiculo"
+							value="#{crtsetor.model.veiculo}"/>
+													
+						<f:facet name="footer">
+							<p:commandButton
+								value="OK"
+								id="cbOK"
+								action="#{crtsetor.save()}"
+								onsuccess="PF('dlg1').hide()"
+								update=":frmSetor:tbDadossetor"
+								/>
+							<p:commandButton
+								value="Cancelar"
+								id="cbCancelar"
+								action="#{crtsetor.create()}"
+								onsuccess="PF('dlg1').hide()"
+								update=":frmSetor:tbDadossetor"
+								/>	
+						</f:facet>
+					</h:panelGrid>
+				</h:form>
+			</p:dialog>
+		</body>
+</html>

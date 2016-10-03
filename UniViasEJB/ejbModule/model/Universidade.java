@@ -39,6 +39,14 @@ public class Universidade {
 	@JoinColumn
 	private Localizacao localizacao;
 	
+	public Localizacao getLocalizacao() {
+		return localizacao;
+	}
+
+	public void setLocalizacao(Localizacao localizacao) {
+		this.localizacao = localizacao;
+	}
+
 	public Inquilino getInquilino() {
 		return inquilino;
 	}
