@@ -38,4 +38,8 @@ public class CrtSetor {
 	public void save(){
 		bean.save(model);
 	}
+	
+	public void remove(){
+		bean.remove(model);
+	}
 }

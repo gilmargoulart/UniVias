@@ -38,4 +38,8 @@ public class CrtFinanceiro {
 	public void save(){
 		bean.save(model);
 	}
+	
+	public void remove(){
+		bean.remove(model);
+	}
 }

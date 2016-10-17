@@ -6,7 +6,7 @@
   	  xmlns:p="http://primefaces.org/ui">
 		<h:head>
 			<meta charset="UTF-8"/>
-			<title>Manter Inquilinos</title>
+			<title>Manter Contratos</title>
 		</h:head>
 		<body>
 			<h:form id="frmContrato">
@@ -52,6 +52,10 @@
 								id="cbAlterar"
 								onsuccess="PF('dlg1').show()"
 								update=":frmContrato"/>
+							<p:commandButton
+								value="Excluir"
+								id="cbExcluir"
+								oncomplete="PF('dlgRemove').show()"/>
 						</f:facet>
 					</p:dataTable>
 				</p:panel>
@@ -59,10 +63,7 @@
 			
 			<!--  -->
 			
-			<p:dialog width="500px" height="300px" id="detailDialog"
-				modal="true"
-				header="Detalhe do Contrato"
-				widgetVar="dlg1">
+			<p:dialog width="800px" height="500px" id="detailDialog" modal="true" header="Detalhe do Contrato" widgetVar="dlg1">
 				<h:form id="form">
 					<h:panelGrid id="formDetail" columns="2">
 					
@@ -73,18 +74,30 @@
 							value="#{crtcontrato.model.titulo}"/>						
 					
 						<h:outputLabel id="lblContratoInicio" value="Contrato Inicio" />
-						<p:inputText
+						<p:calendar
 							id="txtContratoInicio"
 							label="lblContratoInicio"
-							value="#{crtcontrato.model.periodoInicial}"/>
+							value="#{crtcontrato.model.periodoInicial}"
+							showOn="button"
+							pattern="dd/MM/yyyy"
+							mask="true"/>
 						
 						<h:outputLabel id="lblContratoFim" value="Contrato Fim" />
-						<p:inputText
+						<p:calendar
 							id="txtContratoFim"
 							label="lblContratoFim"
-							value="#{crtcontrato.model.periodoInicial}"/>
-										
-										
+							value="#{crtcontrato.model.periodoInicial}"
+							showOn="button"
+							pattern="dd/MM/yyyy"
+							mask="true"/>
+						
+						<h:outputLabel id="lblContrato" value="Contrato" />
+						<p:inputTextarea
+							rows="10"
+							cols="80"
+							scrollHeight="5"
+							autoResize="false"/>
+						
 						<f:facet name="footer">
 							<p:commandButton
 								value="OK"
@@ -103,5 +116,24 @@
 					</h:panelGrid>
 				</h:form>
 			</p:dialog>
+		
+			<!--  -->
+		
+			<p:dialog width="500ox" height="300px" id="dlgRemove" modal="true" header="Confirmação" widgetVar="dlgRemove">
+				<h:form>
+					<h:panelGrid columns="2">
+						<h:commandButton
+							action="#{crtcontrato.remove()}"
+							update=":frmContrato"
+							value="OK"/>
+						<h:commandButton
+							immediate="true"
+							update=":frmContrato"
+							value="Cancelar"
+						/>
+					</h:panelGrid>
+				</h:form>
+			</p:dialog>
+		
 		</body>
 </html>
