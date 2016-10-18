@@ -37,6 +37,9 @@ public class ContratoBean implements ContratoBeanLocal {
 
 	@Override
 	public void remove(Contrato contrato) {
+		if (!em.contains(contrato)) {
+			contrato = em.merge(contrato);
+		}
 		em.remove(contrato);
 	}
 
@@ -45,7 +48,4 @@ public class ContratoBean implements ContratoBeanLocal {
 		Query q = em.createNamedQuery("getAllContrato");
 		return q.getResultList();
 	}
-
-
-
 }
