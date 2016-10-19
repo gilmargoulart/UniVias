@@ -10,10 +10,18 @@
 		</h:head>
 		<body>
 			<h:form id="frmInquilino">
+				
 				<p:panel header="Manter Inquilino">
+					<p:inputText id="txtBusca" value="#{crtinquilino.txtBusca}" />
+					<p:commandButton
+						id="btnBuscar"
+						value="Buscar"
+						action="#{crtinquilino.findByName()}"
+						update=":frmInquilino"/>
+						
 					<p:dataTable
 						id="tbDadosInquilino"
-						value="#{crtinquilino.getAll()}"
+						value="#{crtinquilino.gridInquilinos}"
 						selection="#{crtinquilino.model}"
 						selectionMode="single"
 						var="vInquilino"

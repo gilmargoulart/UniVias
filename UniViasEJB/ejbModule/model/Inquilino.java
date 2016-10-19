@@ -12,6 +12,10 @@ import javax.persistence.NamedQuery;
 	@NamedQuery(
 		name = "getAllInquilino"
 		,query = "select i from Inquilino i"
+	),
+	@NamedQuery(
+		name = "getAllInquilinoByName"
+		,query = "select i from Inquilino i where i.nome like :nome"
 	)
 })
 @Entity

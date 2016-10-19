@@ -56,4 +56,18 @@ public class InquilinoBean implements InquilinoBeanLocal {
 		q.setMaxResults(10);
 		return q.getResultList();
 	}
+
+	@Override
+	public List<Inquilino> getAllByName(String nome) {
+		Query q = em.createNamedQuery("getAllInquilinoByName");
+		
+		//Ajustar like
+		q.setParameter("nome", String.format("%%s", nome));
+		/*
+		q.setMaxResults(10);
+		q.setFirstResult(0);
+		*/
+		
+		return q.getResultList();
+	}
 }

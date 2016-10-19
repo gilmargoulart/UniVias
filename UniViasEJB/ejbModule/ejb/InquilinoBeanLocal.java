@@ -17,4 +17,5 @@ public interface InquilinoBeanLocal {
 	
 	public List<Inquilino> getTop10();
 	
+	public List<Inquilino> getAllByName(String nome);
 }
