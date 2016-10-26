@@ -4,13 +4,17 @@
 	  xmlns:h="http://java.sun.com/jsf/html"
 	  xmlns:f="http://java.sun.com/jsf/core"
   	  xmlns:p="http://primefaces.org/ui">
+		
+		<ui:decorate template="MasterPage.xhtml">
+        <ui:define name="centro">
+		
 		<h:head>
 			<meta charset="UTF-8"/>
-			<title>Manter Universitario</title>
+			<title>Manter Universitário</title>
 		</h:head>
 		<body>
 			<h:form id="frmUniversitario">
-				<p:panel header="Manter Universitario">
+				<p:panel header="Manter Universitário">
 					<p:dataTable
 						id="tbDadosuniversitario"
 						value="#{crtuniversitario.getAll()}"
@@ -19,7 +23,7 @@
 						var="vUniversitario"
 						rowKey="#{vUniversitario.id}">
 						
-						<f:facet name="header">Lista de Universitario</f:facet>
+						<f:facet name="header">Lista de Universitários</f:facet>
 						<!--
 						<p:column>
 							<f:facet name="header">Ação de usuário</f:facet>
@@ -145,4 +149,8 @@
 				</h:form>
 			</p:dialog>
 		</body>
+		
+		</ui:define>
+		</ui:decorate>
+		
 </html>

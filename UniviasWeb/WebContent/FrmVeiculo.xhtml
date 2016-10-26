@@ -4,13 +4,17 @@
 	  xmlns:h="http://java.sun.com/jsf/html"
 	  xmlns:f="http://java.sun.com/jsf/core"
   	  xmlns:p="http://primefaces.org/ui">
+		
+		<ui:decorate template="MasterPage.xhtml">
+        <ui:define name="centro">
+		
 		<h:head>
 			<meta charset="UTF-8"/>
-			<title>Manter Veiculo</title>
+			<title>Manter Veículo</title>
 		</h:head>
 		<body>
 			<h:form id="frmVeiculo">
-				<p:panel header="Manter Veiculo">
+				<p:panel header="Manter Veículo">
 					<p:dataTable
 						id="tbDadosveiculo"
 						value="#{crtveiculo.getAll()}"
@@ -19,7 +23,7 @@
 						var="vVeiculo"
 						rowKey="#{vVeiculo.id}">
 						
-						<f:facet name="header">Lista de Veiculo</f:facet>
+						<f:facet name="header">Lista de Veículos</f:facet>
 						<!--
 						<p:column>
 							<f:facet name="header">Ação de usuário</f:facet>
@@ -134,4 +138,8 @@
 				</h:form>
 			</p:dialog>
 		</body>
+		
+		</ui:define>
+		</ui:decorate>
+		
 </html>
