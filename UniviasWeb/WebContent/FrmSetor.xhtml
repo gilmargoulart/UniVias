@@ -6,20 +6,20 @@
   	  xmlns:p="http://primefaces.org/ui">
 		<h:head>
 			<meta charset="UTF-8"/>
-			<title>Manter Usuario</title>
+			<title>Manter Setor</title>
 		</h:head>
 		<body>
-			<h:form id="frmUsuario">
-				<p:panel header="Manter Usuario">
+			<h:form id="frmSetor">
+				<p:panel header="Manter Setor">
 					<p:dataTable
-						id="tbDadosusuario"
-						value="#{crtusuario.getAll()}"
-						selection="#{crtusuario.model}"
+						id="tbDadossetor"
+						value="#{crtsetor.getAll()}"
+						selection="#{crtsetor.model}"
 						selectionMode="single"
-						var="vUsuario"
-						rowKey="#{vUsuario.id}">
+						var="vSetor"
+						rowKey="#{vSetor.id}">
 						
-						<f:facet name="header">Lista de Usuario</f:facet>
+						<f:facet name="header">Lista de Setores</f:facet>
 						<!--
 						<p:column>
 							<f:facet name="header">Ação de usuário</f:facet>
@@ -27,30 +27,30 @@
 						</p:column>
 						-->
 						<p:column>
-							<f:facet name="header">Nome</f:facet>
-							<h:outputText value="#{vUsuario.nome}" />
+							<f:facet name="header">idRota</f:facet>
+							<h:outputText value="#{vSetor.idRota}" />
 						</p:column>
 						<p:column>
-							<f:facet name="header">Login</f:facet>
-							<h:outputText value="#{vUsuario.login}"/>
+							<f:facet name="header">Motorista</f:facet>
+							<h:outputText value="#{vSetor.motorista}"/>
 						</p:column>
 						<p:column>
-							<f:facet name="header">Permissao</f:facet>
-							<h:outputText value="#{vUsuario.permissao}"/>
+							<f:facet name="header">Veículo</f:facet>
+							<h:outputText value="#{vSetor.veiculo}"/>
 						</p:column>
-											
+					
 						<f:facet name="footer">
 							<p:commandButton
 								value="Incluir"
 								id="cbIncluir"
-								action="#{crtusuario.create()}"
+								action="#{crtsetor.create()}"
 								onsuccess="PF('dlg1').show()"
-								update=":frmUsuario"/>
+								update=":frmSetor"/>
 							<p:commandButton
 								value="Alterar"
 								id="cbAlterar"
 								onsuccess="PF('dlg1').show()"
-								update=":frmUsuario"/>
+								update=":frmSetor"/>
 						</f:facet>
 					</p:dataTable>
 				</p:panel>
@@ -60,49 +60,45 @@
 			
 			<p:dialog width="500px" height="300px" id="detailDialog"
 				modal="true"
-				header="Detalhe do Usuario"
-				widgetVar="dlg1">
+				header="Detalhe do Setor"
+				widgetVar="dlg1"
+				appendTo="@(body)">
 				<h:form id="form">
 					<h:panelGrid id="formDetail" columns="2">
 					
-						<h:outputLabel id="lblNome" value="Nome" />
+						<h:outputLabel id="lblidRota" value="idRota" />
 						<p:inputText
-							id="txtNome"
-							label="lblNome"
-							value="#{crtusuario.model.nome}"/>
+							id="txtidRota"
+							label="lblidRota"
+							value="#{crtsetor.model.idRota}"/>
 						
-						<h:outputLabel id="lblLogin" value="Login" />
+						<h:outputLabel id="lblMotorista" value="Motorista" />
 						<p:inputText
-							id="txtLogin"
-							label="lblLogin"
-							value="#{crtusuario.model.login}"/>
+							id="txtMotorista"
+							label="lblMotorista"
+							value="#{crtsetor.model.motorista}"/>
 							
-						<h:outputLabel id="lblPermissao" value="Permissao" />
+						<h:outputLabel id="lblVeiculo" value="Veiculo" />
 						<p:inputText
-							id="txtPermissao"
-							label="lblPermissao"
-							value="#{crtusuario.model.permissao}"/>
-						
-						<h:outputLabel id="lblSenha" value="Senha" />
-						<p:inputText
-							id="txtSenha"
-							label="lblSenha"
-							value="#{crtusuario.model.senha}"/>
-												
+							id="txtVeiculo"
+							label="lblVeiculo"
+							value="#{crtsetor.model.veiculo}"/>
+													
 						<f:facet name="footer">
 							<p:commandButton
 								value="OK"
 								id="cbOK"
-								action="#{crtusuario.save()}"
+								action="#{crtsetor.save()}"
 								onsuccess="PF('dlg1').hide()"
-								update=":frmUsuario:tbDadosusuario"
+								update=":frmSetor:tbDadossetor"
 								/>
 							<p:commandButton
 								value="Cancelar"
 								id="cbCancelar"
-								action="#{crtfinanceiro.create()}"
+								action="#{crtsetor.create()}"
 								onsuccess="PF('dlg1').hide()"
-								update=":frmUsuario:tbDadosusuario"/>	
+								update=":frmSetor:tbDadossetor"
+								/>	
 						</f:facet>
 					</h:panelGrid>
 				</h:form>

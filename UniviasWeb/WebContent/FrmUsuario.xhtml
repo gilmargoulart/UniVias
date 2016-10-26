@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+  	  xmlns:p="http://primefaces.org/ui">
+		<h:head>
+			<meta charset="UTF-8"/>
+			<title>Manter Usuario</title>
+		</h:head>
+		<body>
+			<h:form id="frmUsuario">
+				<p:panel header="Manter Usuario">
+					<p:dataTable
+						id="tbDadosusuario"
+						value="#{crtusuario.getAll()}"
+						selection="#{crtusuario.model}"
+						selectionMode="single"
+						var="vUsuario"
+						rowKey="#{vUsuario.id}">
+						
+						<f:facet name="header">Lista de Usuario</f:facet>
+						<!--
+						<p:column>
+							<f:facet name="header">Ação de usuário</f:facet>
+							<h:commandButton action="PF('dlg1').show()">Botão</h:commandButton>
+						</p:column>
+						-->
+						<p:column>
+							<f:facet name="header">Nome</f:facet>
+							<h:outputText value="#{vUsuario.nome}" />
+						</p:column>
+						<p:column>
+							<f:facet name="header">Login</f:facet>
+							<h:outputText value="#{vUsuario.login}"/>
+						</p:column>
+						<p:column>
+							<f:facet name="header">Permissao</f:facet>
+							<h:outputText value="#{vUsuario.permissao}"/>
+						</p:column>
+											
+						<f:facet name="footer">
+							<p:commandButton
+								value="Incluir"
+								id="cbIncluir"
+								action="#{crtusuario.create()}"
+								onsuccess="PF('dlg1').show()"
+								update=":frmUsuario"/>
+							<p:commandButton
+								value="Alterar"
+								id="cbAlterar"
+								onsuccess="PF('dlg1').show()"
+								update=":frmUsuario"/>
+						</f:facet>
+					</p:dataTable>
+				</p:panel>
+			</h:form>
+			
+			<!--  -->
+			
+			<p:dialog width="500px" height="300px" id="detailDialog"
+				modal="true"
+				header="Detalhe do Usuario"
+				widgetVar="dlg1"
+				appendTo="@(body)">
+				<h:form id="form">
+					<h:panelGrid id="formDetail" columns="2">
+					
+						<h:outputLabel id="lblNome" value="Nome" />
+						<p:inputText
+							id="txtNome"
+							label="lblNome"
+							value="#{crtusuario.model.nome}"/>
+						
+						<h:outputLabel id="lblLogin" value="Login" />
+						<p:inputText
+							id="txtLogin"
+							label="lblLogin"
+							value="#{crtusuario.model.login}"/>
+							
+						<h:outputLabel id="lblPermissao" value="Permissao" />
+						<p:inputText
+							id="txtPermissao"
+							label="lblPermissao"
+							value="#{crtusuario.model.permissao}"/>
+						
+						<h:outputLabel id="lblSenha" value="Senha" />
+						<p:inputText
+							id="txtSenha"
+							label="lblSenha"
+							value="#{crtusuario.model.senha}"/>
+												
+						<f:facet name="footer">
+							<p:commandButton
+								value="OK"
+								id="cbOK"
+								action="#{crtusuario.save()}"
+								onsuccess="PF('dlg1').hide()"
+								update=":frmUsuario:tbDadosusuario"
+								/>
+							<p:commandButton
+								value="Cancelar"
+								id="cbCancelar"
+								action="#{crtfinanceiro.create()}"
+								onsuccess="PF('dlg1').hide()"
+								update=":frmUsuario:tbDadosusuario"/>	
+						</f:facet>
+					</h:panelGrid>
+				</h:form>
+			</p:dialog>
+		</body>
+</html>

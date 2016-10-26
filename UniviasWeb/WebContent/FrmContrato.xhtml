@@ -63,7 +63,7 @@
 			
 			<!--  -->
 			
-			<p:dialog width="800px" height="500px" id="detailDialog" modal="true" header="Detalhe do Contrato" widgetVar="dlg1">
+			<p:dialog width="800px" height="500px" id="detailDialog" modal="true" header="Detalhe do Contrato" widgetVar="dlg1" appendTo="@(body)" >
 				<h:form id="form">
 					<h:panelGrid id="formDetail" columns="2">
 					
@@ -119,7 +119,7 @@
 		
 			<!--  -->
 		
-			<p:dialog width="500ox" height="300px" id="dlgRemove" modal="true" header="Confirmação" widgetVar="dlgRemove">
+			<p:dialog width="500ox" height="300px" id="dlgRemove" modal="true" header="Confirmação" widgetVar="dlgRemove" appendTo="@(body)" >
 				<h:form>
 					<h:panelGrid columns="2">
 						<h:commandButton
