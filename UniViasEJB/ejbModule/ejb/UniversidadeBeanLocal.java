@@ -16,5 +16,7 @@ public interface UniversidadeBeanLocal {
 	public List<Universidade> getAll();
 
 	public List<Universidade> getTop10();
-
+	
+	public List<Universidade> getAllByName(String name);
+	
 }

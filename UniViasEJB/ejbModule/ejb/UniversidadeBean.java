@@ -55,4 +55,12 @@ public class UniversidadeBean implements UniversidadeBeanLocal {
 		return q.getResultList();
 	}
 
+	@Override
+	public List<Universidade> getAllByName(String name) {
+		Query q = em.createNamedQuery("getAllUniversidadeByName");
+		q.setParameter("d", "%" + name + "%");
+		q.setMaxResults(30);
+		return q.getResultList();
+	}
+
 }
