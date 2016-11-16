@@ -18,6 +18,10 @@ import enums.NivelPermissao;
 	@NamedQuery(
 		name = "getAllUsuario"
 		,query = "select u from Usuario u"
+	),
+	@NamedQuery(
+		name = "validaUsuario"
+		,query = "select u from Usuario u where u.login = :usuario and u.senha = :senha"
 	)
 })
 
@@ -44,6 +48,16 @@ public class Usuario {
 	@Enumerated(EnumType.ORDINAL)
 	@Column(columnDefinition = "tinyint")
 	private NivelPermissao permissao;
+	
+	public Usuario(String nome, String login, String senha){
+		setNome(nome);
+		setLogin(login);
+		setSenha(senha);
+	}
+	
+	public Usuario(){
+		//
+	}
 	
 	public Inquilino getInquilino() {
 		return inquilino;

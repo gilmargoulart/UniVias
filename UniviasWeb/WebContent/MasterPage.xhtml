@@ -83,12 +83,17 @@
 				<p:dialog  widgetVar="dlgLogin" resizable="false"  closable="false" modal="true">
 					<h:panelGrid columns="2">
 						<h:outputLabel value="Login"/>
-						<p:inputText id="txtLogin" />
+						<p:inputText
+							id="txtLogin"
+							value="#{crtmasterpage.model.login}" />
 					
 						<h:outputLabel value="Senha"/>
-						<p:inputText id="txtSenha" />
+						<p:password
+							id="txtSenha"
+							value="#{crtmasterpage.model.senha}" />
 								
-						<p:commandButton value="OK"/>		
+						<p:commandButton value="OK"
+							action="#{crtmasterpage.validarUsuario()}"/>		
 						
 					</h:panelGrid>
 				</p:dialog>

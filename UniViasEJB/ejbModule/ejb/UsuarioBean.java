@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
@@ -47,6 +48,30 @@ public class UsuarioBean implements UsuarioBeanLocal {
 	public List<Usuario> getAll() {
 		Query q = em.createNamedQuery("getAllUsuario");
 		return q.getResultList();
+	}
+
+	@Override
+	public void criarUsuario(String nome, String login, String senha) {
+		Usuario u = new Usuario(nome, login, senha);
+		em.persist(u);
+	}
+
+	@Override
+	public Usuario validaUsuario(String usuario, String senha) {
+		
+		Usuario u;
+		try {
+			Query q = em.createNamedQuery("validaUsuario");
+			q.setParameter("login", usuario);
+			q.setParameter("senha", senha);
+			q.setMaxResults(1);
+			q.getSingleResult();
+			u = (Usuario)q.getSingleResult();
+		} catch (NoResultException e) {
+			u = null;
+		}
+		
+		return u;
 	}
 
 
