@@ -1,12 +1,18 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 @NamedQueries({
 	@NamedQuery(
@@ -24,6 +30,8 @@ public class Inquilino {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	
+	
 
 	/**
 	 * Nome completo
@@ -52,6 +60,11 @@ public class Inquilino {
 	 */
 	@Column(length = 20)
 	private String doctoIdentificacao;
+	
+	@JoinColumn(name="InquilinoID")
+	@OneToMany(cascade=CascadeType.ALL)
+	private List<itemBem> colItensBem = new ArrayList<itemBem>();
+
 
 	public long getId() {
 		return id;
