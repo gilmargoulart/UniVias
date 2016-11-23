@@ -14,6 +14,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
+import exemplo.itemBem;
+
 @NamedQueries({
 	@NamedQuery(
 		name = "getAllInquilino"
