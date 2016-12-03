@@ -2,16 +2,21 @@ package enums;
 
 public enum Status {
 	
-	ATIVO('A')
-	,INATIVO('I');
+	ATIVO("A", "Ativo")
+	,INATIVO("I", "Inativo");
 	
-	private char status;
+	private String status;
+	private String description;
 	
-	Status(char status){
+	Status(String status, String description){
 		this.status = status;
+		this.description = description;
 	}
 
-	public char getStatus() {
+	public String getStatus() {
 		return status;
+	}
+	public String getDescription(){
+		return this.description;
 	}
 }

@@ -45,14 +45,14 @@ public class Motorista {
 	private String telefone;
 	
 	@Temporal(value = TemporalType.DATE)
-	private Date admissao;
+	private Date admissao = new Date();
 	
 	@Temporal(value = TemporalType.DATE)
 	private Date demissao;
 
 	@Column(length = 1, columnDefinition = "char(1)")
 	@Enumerated(EnumType.STRING)
-	private Status status;
+	private Status status = Status.ATIVO;
 	
 	public Inquilino getInquilino() {
 		return inquilino;

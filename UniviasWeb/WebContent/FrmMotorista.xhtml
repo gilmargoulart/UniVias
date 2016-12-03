@@ -99,15 +99,23 @@
 							id="txtE-mail"
 							label="lblE-mail"
 							value="#{crtmotorista.model.email}"/>
-						
+
 						<h:outputLabel id="lblStatus" value="Status" />
 						<p:inputText
 							id="txtStatus"
 							label="lblStatus"
-							value="#{crtmotorista.model.status}"/>
-						
+							value="#{crtmotorista.model.status}" />
+						<!--
+						<h:selectOneMenu label="Status" value="#{crtmotorista.model.status}" id="ctrStatus" >
+							<f:selectItems
+								value="#{crtmotorista.statusList}"
+								var="vStatusMotorista"
+								itemLabel="#{vStatusMotorista}"
+								itemValue="#{vStatusMotorista}"/>
+						</h:selectOneMenu>
+						-->
 						<h:outputLabel id="lblAdmissao" value="Admissao" />
-						<p:inputText
+						<p:calendar
 							id="txtAdmissao"
 							label="lblAdmissao"
 							value="#{crtmotorista.model.admissao}"
@@ -116,7 +124,7 @@
 							mask="true"/>
 							
 						<h:outputLabel id="lblDemissao" value="Demissao" />
-						<p:inputText
+						<p:calendar
 							id="txtDemissao"
 							label="lblDemissao"
 							value="#{crtmotorista.model.demissao}"

@@ -49,6 +49,8 @@ public class CrtMasterPage {
 			HttpSession session = (HttpSession) fc.getExternalContext().getSession(true);
 			session.setAttribute("USUARIO_LOGADO", u);
 			RequestContext.getCurrentInstance().execute("PF('dlgLogin').hide()");
+		} else {
+			System.out.println("Usuario inválido.");
 		}
 	}
 	

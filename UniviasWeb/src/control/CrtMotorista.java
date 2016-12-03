@@ -5,6 +5,7 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import ejb.MotoristaBeanLocal;
+import enums.Status;
 import model.Motorista;
 
 @ManagedBean(name = "crtmotorista")
@@ -26,7 +27,11 @@ public class CrtMotorista {
 	public void setModel(Motorista model) {
 		this.model = model;
 	}
-
+	
+	public Status[] getStatusList(){
+		return Status.values();
+	}
+	
 	public List<Motorista> getAll(){
 		return bean.getAll();
 	}
