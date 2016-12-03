@@ -1,7 +1,7 @@
 package model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -100,6 +100,18 @@ public class Motorista {
 
 	public void setAdmissao(Date admissao) {
 		this.admissao = admissao;
+	}
+	
+	public String getAdmissaoStr() {
+		return new SimpleDateFormat("dd/MM/yyyy").format(admissao);
+	}
+	
+	public String getDemissaoStr() {
+		if (demissao != null) {
+			return new SimpleDateFormat("dd/MM/yyyy").format(demissao);
+		} else {
+			return "";
+		}
 	}
 
 	public Date getDemissao() {
