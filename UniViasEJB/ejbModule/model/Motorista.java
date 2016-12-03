@@ -17,6 +17,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import enums.Status;
+import utils.DataPadrao;
 
 @NamedQueries({
 	@NamedQuery(
@@ -103,15 +104,11 @@ public class Motorista {
 	}
 	
 	public String getAdmissaoStr() {
-		return new SimpleDateFormat("dd/MM/yyyy").format(admissao);
+		return DataPadrao.formatoDataPadrao(admissao);
 	}
 	
 	public String getDemissaoStr() {
-		if (demissao != null) {
-			return new SimpleDateFormat("dd/MM/yyyy").format(demissao);
-		} else {
-			return "";
-		}
+		return DataPadrao.formatoDataPadrao(demissao);
 	}
 
 	public Date getDemissao() {
