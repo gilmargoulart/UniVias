@@ -37,11 +37,15 @@
 						
 						<p:column>
 							<f:facet name="header">Contrato Inicio</f:facet>
-							<h:outputText value="#{vContrato.periodoInicial}" />
+							<h:outputText value="#{vContrato.periodoInicial}" >
+								<f:convertDateTime pattern="dd/MM/yyyy" />
+							</h:outputText>
 						</p:column>
 						<p:column>
 							<f:facet name="header">Contrato Fim</f:facet>
-							<h:outputText value="#{vContrato.periodoFinal}"/>
+							<h:outputText value="#{vContrato.periodoFinal}">
+									<f:convertDateTime pattern="dd/MM/yyyy" />
+							</h:outputText>
 						</p:column>
 						
 						<f:facet name="footer">

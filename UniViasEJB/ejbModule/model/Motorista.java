@@ -103,13 +103,6 @@ public class Motorista {
 		this.admissao = admissao;
 	}
 	
-	public String getAdmissaoStr() {
-		return DataPadrao.formatoDataPadrao(admissao);
-	}
-	
-	public String getDemissaoStr() {
-		return DataPadrao.formatoDataPadrao(demissao);
-	}
 
 	public Date getDemissao() {
 		return demissao;

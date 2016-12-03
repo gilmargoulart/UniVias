@@ -48,11 +48,15 @@
 						</p:column>
 						<p:column>
 							<f:facet name="header">Admissao</f:facet>
-							<h:outputText value="#{vMotorista.admissaoStr}"/>
+							<h:outputText value="#{vMotorista.admissao}">
+								<f:convertDateTime pattern="dd/MM/yyyy" />
+							</h:outputText>
 						</p:column>
 						<p:column>
 							<f:facet name="header">Demissao</f:facet>
-							<h:outputText value="#{vMotorista.demissaoStr}"/>
+							<h:outputText value="#{vMotorista.demissao}">
+								<f:convertDateTime pattern="dd/MM/yyyy" />
+							</h:outputText>
 						</p:column>
 											
 						<f:facet name="footer">

@@ -14,6 +14,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import utils.DataPadrao;
+
 @NamedQueries({
 	@NamedQuery(
 		name = "getAllContrato"
