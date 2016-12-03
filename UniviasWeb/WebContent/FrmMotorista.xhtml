@@ -110,13 +110,19 @@
 						<p:inputText
 							id="txtAdmissao"
 							label="lblAdmissao"
-							value="#{crtmotorista.model.admissao}"/>
+							value="#{crtmotorista.model.admissao}"
+							showOn="button"
+							pattern="dd/MM/yyyy"
+							mask="true"/>
 							
 						<h:outputLabel id="lblDemissao" value="Demissao" />
 						<p:inputText
 							id="txtDemissao"
 							label="lblDemissao"
-							value="#{crtmotorista.model.demissao}"/>
+							value="#{crtmotorista.model.demissao}"
+							showOn="button"
+							pattern="dd/MM/yyyy"
+							mask="true"/>
 							
 						<f:facet name="footer">
 							<p:commandButton
