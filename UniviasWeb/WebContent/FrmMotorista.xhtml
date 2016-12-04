@@ -15,6 +15,9 @@
 		<body>
 			<h:form id="frmMotorista">
 				<p:panel header="Manter Motorista">
+					<p:menubar>
+		                <p:menuitem value="Inlcuir" update=":form" oncomplete="PF('dlg1').show()" action="#{crtmotorista.create()}" icon="fa fa-plus" />
+					</p:menubar>
 					<p:dataTable
 						id="tbDadosmotorista"
 						value="#{crtmotorista.getAll()}"
@@ -23,10 +26,12 @@
 						var="vMotorista"
 						rowKey="#{vMotorista.id}">
 						
-						<f:facet name="header">Lista de Motorista</f:facet>
+						<f:facet name="header">
+							<h:outputText value="Lista de Motorista" />
+						</f:facet>
 						
 						<p:column style="width:32px;text-align: center">
-							<p:commandButton update=":form" oncomplete="PF('dlg1').show()" icon="fa-edit" title="Editar">
+							<p:commandButton update=":form" oncomplete="PF('dlg1').show()" icon="fa fa-fw fa-edit" title="Editar">
 								<f:setPropertyActionListener value="#{vMotorista}" target="#{crtmotorista.modelMotorista}" />
 							</p:commandButton>
 						</p:column>
@@ -47,26 +52,20 @@
 							<h:outputText value="#{vMotorista.status.description}"/>
 						</p:column>
 						<p:column>
-							<f:facet name="header">Admissao</f:facet>
+							<f:facet name="header">Admissão</f:facet>
 							<h:outputText value="#{vMotorista.admissao}">
 								<f:convertDateTime pattern="dd/MM/yyyy" />
 							</h:outputText>
 						</p:column>
 						<p:column>
-							<f:facet name="header">Demissao</f:facet>
+							<f:facet name="header">Demissão</f:facet>
 							<h:outputText value="#{vMotorista.demissao}">
 								<f:convertDateTime pattern="dd/MM/yyyy" />
 							</h:outputText>
 						</p:column>
 											
 						<f:facet name="footer">
-							<p:commandButton
-								id="cbIncluir"
-								update=":form"
-								oncomplete="PF('dlg1').show()"
-								value="Incluir"
-								action="#{crtmotorista.create()}"
-								/>
+							
 						</f:facet>
 					</p:dataTable>
 				</p:panel>
@@ -109,7 +108,7 @@
 								itemValue="#{vStatusMotorista}"/>
 						</h:selectOneMenu>
 						
-						<h:outputLabel id="lblAdmissao" value="Admissao" />
+						<h:outputLabel id="lblAdmissao" value="Admissão" />
 						<p:calendar
 							id="txtAdmissao"
 							label="lblAdmissao"
@@ -118,7 +117,7 @@
 							pattern="dd/MM/yyyy"
 							mask="true"/>
 							
-						<h:outputLabel id="lblDemissao" value="Demissao" />
+						<h:outputLabel id="lblDemissao" value="Demissão" />
 						<p:calendar
 							id="txtDemissao"
 							label="lblDemissao"
@@ -129,18 +128,20 @@
 							
 						<f:facet name="footer">
 							<p:commandButton
-								value="OK"
+								value="Salvar"
 								id="cbOK"
 								action="#{crtmotorista.save()}"
 								onsuccess="PF('dlg1').hide()"
 								update=":frmMotorista:tbDadosmotorista"
+								icon="fa fa-fw fa-save"
 								/>
 							<p:commandButton
-								value="Cancelar"
+								value="Voltar"
 								id="cbCancelar"
 								action="#{crtmotorista.create()}"
 								onsuccess="PF('dlg1').hide()"
-								update=":frmMotorista:tbDadosmotorista"/>	
+								update=":frmMotorista:tbDadosmotorista"
+								icon="fa fa-fw fa-arrow-left"/>	
 						</f:facet>
 					</h:panelGrid>
 				</h:form>
