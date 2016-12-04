@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
@@ -72,5 +73,10 @@ public class CrtMasterPage {
 			ec.redirect("index.xhtml");
 		} catch (IOException ex) {
 		}
+	}
+	
+	public void showMessage(String title, String message){
+		FacesContext context = FacesContext.getCurrentInstance();
+		context.addMessage(null, new FacesMessage(title, message));
 	}
 }

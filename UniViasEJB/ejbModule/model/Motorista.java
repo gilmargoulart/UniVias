@@ -14,6 +14,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Size;
+
 import enums.Status;
 
 @NamedQueries({
@@ -34,6 +36,7 @@ public class Motorista {
 	private long id;
 	
 	@Column(length = 120)
+	@Size(min=3, message="Nome é obrigatório.")
 	private String nome;
 	
 	@Column(length = 400)

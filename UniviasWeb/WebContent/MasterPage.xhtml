@@ -16,13 +16,13 @@
             <p:layout style="min-width:1020px;max-width:1020px;min-height:600px">  
                 <p:layoutUnit position="north" size="100">  
                     <h:graphicImage url="http://www.univille.edu.br/templates/source/8/images/pages/logo.png" width="90px" height="81px"/>
-                    
-                </p:layoutUnit>  
+                </p:layoutUnit>
  				
-                <p:layoutUnit position="west" size="220" > 
+                <p:layoutUnit position="west" size="220" style="z-index=2500"> 
                     <ui:insert name="menu">
                         <h:form>
-                            <p:megaMenu
+                        	<p:growl id="grolwMasterPage" showDetail="true" sticky="true" />
+                            <p:megaMenu 
                             	orientation="vertical"
                             	style="margin-top:20px">
                             	
