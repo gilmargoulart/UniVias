@@ -1,8 +1,6 @@
 package control;
 
 import java.util.List;
-
-import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -16,23 +14,18 @@ public class CrtMotorista {
 	
 	@EJB
 	private MotoristaBeanLocal bean;
-	private Motorista model = new Motorista();
+	private Motorista modelMotorista;
 	
 	public CrtMotorista(){
-		//initialize();
+		
 	}
 	
-	@PostConstruct
-	public void initialize(){
-		model = new Motorista();
-	}
-	
-	public Motorista getModel() {
-		return model;
+	public Motorista getModelMotorista() {
+		return modelMotorista;
 	}
 
-	public void setModel(Motorista model) {
-		this.model = model;
+	public void setModelMotorista(Motorista model) {
+		this.modelMotorista = model;
 	}
 	
 	public List<Motorista> getAll(){
@@ -40,7 +33,7 @@ public class CrtMotorista {
 	}
 	
 	public void create(){
-		initialize();
+		modelMotorista = new Motorista();
 	}
 
 	public Status[] getStatusList() {
@@ -48,10 +41,10 @@ public class CrtMotorista {
 	}
 	
 	public void save(){
-		bean.save(model);
+		bean.save(modelMotorista);
 	}
 	
 	public void remove(){
-		bean.remove(model);
+		bean.remove(modelMotorista);
 	}
 }

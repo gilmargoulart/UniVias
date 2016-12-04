@@ -18,13 +18,18 @@
 					<p:dataTable
 						id="tbDadosmotorista"
 						value="#{crtmotorista.getAll()}"
-						selection="#{crtmotorista.model}"
+						selection="#{crtmotorista.modelMotorista}"
 						selectionMode="single"
 						var="vMotorista"
 						rowKey="#{vMotorista.id}">
 						
 						<f:facet name="header">Lista de Motorista</f:facet>
 						
+						<p:column style="width:32px;text-align: center">
+							<p:commandButton update=":form" oncomplete="PF('dlg1').show()" icon="fa-edit" title="Editar">
+								<f:setPropertyActionListener value="#{vMotorista}" target="#{crtmotorista.modelMotorista}" />
+							</p:commandButton>
+						</p:column>
 						<p:column>
 							<f:facet name="header">Nome</f:facet>
 							<h:outputText value="#{vMotorista.nome}" />
@@ -56,16 +61,12 @@
 											
 						<f:facet name="footer">
 							<p:commandButton
-								value="Incluir"
 								id="cbIncluir"
+								update=":form"
+								oncomplete="PF('dlg1').show()"
+								value="Incluir"
 								action="#{crtmotorista.create()}"
-								onsuccess="PF('dlg1').show()"
-								update=":frmMotorista"/>
-							<p:commandButton
-								value="Alterar"
-								id="cbAlterar"
-								onsuccess="PF('dlg1').show()"
-								update=":frmMotorista"/>
+								/>
 						</f:facet>
 					</p:dataTable>
 				</p:panel>
@@ -85,22 +86,22 @@
 						<p:inputText
 							id="txtNome"
 							label="lblNome"
-							value="#{crtmotorista.model.nome}"/>
+							value="#{crtmotorista.modelMotorista.nome}"/>
 						
 						<h:outputLabel id="lblTelefone" value="Telefone" />
 						<p:inputText
 							id="txtTelefone"
 							label="lblTelefone"
-							value="#{crtmotorista.model.telefone}"/>
+							value="#{crtmotorista.modelMotorista.telefone}"/>
 							
 						<h:outputLabel id="lblE-mail" value="E-mail" />
 						<p:inputText
 							id="txtE-mail"
 							label="lblE-mail"
-							value="#{crtmotorista.model.email}"/>
+							value="#{crtmotorista.modelMotorista.email}"/>
 
 						<h:outputLabel id="lblStatus" value="Status" for="cbxStatus" />
-						<h:selectOneMenu label="Status" value="#{crtmotorista.model.status}" id="cbxStatus" >
+						<h:selectOneMenu label="Status" value="#{crtmotorista.modelMotorista.status}" id="cbxStatus" >
 							<f:selectItems
 								value="#{crtmotorista.statusList}"
 								var="vStatusMotorista"
@@ -112,7 +113,7 @@
 						<p:calendar
 							id="txtAdmissao"
 							label="lblAdmissao"
-							value="#{crtmotorista.model.admissao}"
+							value="#{crtmotorista.modelMotorista.admissao}"
 							showOn="button"
 							pattern="dd/MM/yyyy"
 							mask="true"/>
@@ -121,7 +122,7 @@
 						<p:calendar
 							id="txtDemissao"
 							label="lblDemissao"
-							value="#{crtmotorista.model.demissao}"
+							value="#{crtmotorista.modelMotorista.demissao}"
 							showOn="button"
 							pattern="dd/MM/yyyy"
 							mask="true"/>
