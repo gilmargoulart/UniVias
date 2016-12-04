@@ -13,12 +13,14 @@
 			<title>Manter Contratos</title>
 		</h:head>
 		<body>
-						<h:form id="frmContrato">
+			<h:form id="frmContrato">
 				<p:panel header="Manter Contrato">
-					<p:menubar>
-		                <p:menuitem value="Inlcuir" update=":form" oncomplete="PF('dlg1').show()" action="#{crtcontrato.create()}" icon="fa fa-plus" />
-					</p:menubar>
-				
+					<p:toolbar id="tbActions">
+						<f:facet name="left">
+							<p:commandButton value="Inlcuir" update=":form" oncomplete="PF('dlg1').show()" action="#{crtcontrato.create()}" icon="fa fa-plus" />
+						</f:facet>
+					</p:toolbar>
+					<p:sticky target="tbActions" />
 					<p:dataTable
 						id="tbDadosContrato"
 						value="#{crtcontrato.getAll()}"
@@ -40,9 +42,7 @@
 								<f:setPropertyActionListener value="#{vContrato}" target="#{crtcontrato.model}"  />
 							</p:commandButton>							
 						</p:column>
-						
-					
-										
+								
 						<p:column>
 							<f:facet name="header">Titulo</f:facet>
 							<h:outputText value="#{vContrato.titulo}" />
@@ -71,7 +71,7 @@
 			
 			<!--  -->
 			
-			<p:dialog width="800px" height="500px" id="detailDialog" modal="true" header="Detalhe do Contrato" widgetVar="dlg1" appendTo="@(body)" >
+			<p:dialog id="detailDialog" modal="true" header="Detalhe do Contrato" widgetVar="dlg1" appendTo="@(body)" >
 				<h:form id="form">
 					<h:panelGrid id="formDetail" columns="2">
 					
@@ -137,10 +137,12 @@
 							update=":frmContrato"
 							value="OK"/>
 						<h:commandButton
-							immediate="true"
-							update=":frmContrato"
-							value="Cancelar"
-						/>
+							value="Voltar"
+								id="cbCancelar"
+								action="#{crtcontrato.create()}"
+								onsuccess="PF('dlgRemove').hide()"
+								update=":frmContrato:tbDadosContrato"
+								icon="fa fa-fw fa-arrow-left"/>	
 					</h:panelGrid>
 				</h:form>
 			</p:dialog>

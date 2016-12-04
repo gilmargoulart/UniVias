@@ -1,7 +1,6 @@
 package model;
 
 import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,8 +12,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-import utils.DataPadrao;
 
 @NamedQueries({
 	@NamedQuery(
@@ -41,7 +38,7 @@ public class Contrato {
 	private String titulo;
 	
 	@Temporal(value = TemporalType.DATE)
-	private Date periodoInicial;
+	private Date periodoInicial = new Date();
 	
 	@Temporal(value = TemporalType.DATE)
 	private Date periodoFinal;
