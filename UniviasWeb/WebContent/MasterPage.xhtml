@@ -26,7 +26,7 @@
                             	orientation="vertical"
                             	style="margin-top:20px">
                             	
-                            	<p:submenu label="Cadastros" icon="ui-icon-check">
+                            	<p:submenu icon="ui-icon-contact" label="Cadastros" >
                             		<p:column>
                             			<p:submenu label="Cadastros">
 	                            			<p:menuitem value="Contrato" url="FrmContrato.xhtml"/>
@@ -40,7 +40,7 @@
                             		</p:column>
                             	</p:submenu>
                             	
-                            	<p:submenu label="Financeiro">
+                            	<p:submenu icon="fa fa-fw fa-money" label="Financeiro">
                             		<p:column>
                             			<p:submenu label="Contas a receber">
                             				<p:menuitem value="Universitários" url="#"/>
@@ -51,6 +51,9 @@
                             			</p:submenu>
                             		</p:column>
                             	</p:submenu>
+                            	
+                            	<p:menuitem icon="fa fa-fw fa-close" action="#{crtmasterpage.logoff()}" title="Sair">Sair</p:menuitem>
+                            
                             </p:megaMenu>
                             
                             <!--

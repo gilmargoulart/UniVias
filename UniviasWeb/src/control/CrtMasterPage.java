@@ -1,11 +1,13 @@
 package control;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
@@ -58,6 +60,17 @@ public class CrtMasterPage {
 		HttpSession session = (HttpSession) fc.getExternalContext().getSession(true);
 		if(session.getAttribute("USUARIO_LOGADO") == null){
 			RequestContext.getCurrentInstance().execute("PF('dlgLogin').show()");
+		}
+	}
+	
+	public void logoff(){
+		FacesContext fc = FacesContext.getCurrentInstance();
+		HttpSession session = (HttpSession) fc.getExternalContext().getSession(true);
+		session.removeAttribute("USUARIO_LOGADO");
+		ExternalContext ec = fc.getExternalContext();
+		try {
+			ec.redirect("index.xhtml");
+		} catch (IOException ex) {
 		}
 	}
 }
