@@ -1,6 +1,5 @@
 package model;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,9 +14,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
 import enums.Status;
-import utils.DataPadrao;
 
 @NamedQueries({
 	@NamedQuery(
@@ -51,9 +48,13 @@ public class Motorista {
 	@Temporal(value = TemporalType.DATE)
 	private Date demissao;
 
-	@Column(length = 1, columnDefinition = "char(1)")
-	@Enumerated(EnumType.STRING)
+	@Column(length = 1)
+	@Enumerated(EnumType.ORDINAL)
 	private Status status = Status.ATIVO;
+	
+	public Motorista(){
+		//
+	}
 	
 	public Inquilino getInquilino() {
 		return inquilino;

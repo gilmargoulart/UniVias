@@ -24,12 +24,7 @@
 						rowKey="#{vMotorista.id}">
 						
 						<f:facet name="header">Lista de Motorista</f:facet>
-						<!--
-						<p:column>
-							<f:facet name="header">Ação de usuário</f:facet>
-							<h:commandButton action="PF('dlg1').show()">Botão</h:commandButton>
-						</p:column>
-						-->
+						
 						<p:column>
 							<f:facet name="header">Nome</f:facet>
 							<h:outputText value="#{vMotorista.nome}" />
@@ -44,7 +39,7 @@
 						</p:column>
 						<p:column>
 							<f:facet name="header">Status</f:facet>
-							<h:outputText value="#{vMotorista.status}"/>
+							<h:outputText value="#{vMotorista.status.description}"/>
 						</p:column>
 						<p:column>
 							<f:facet name="header">Admissao</f:facet>
@@ -104,20 +99,15 @@
 							label="lblE-mail"
 							value="#{crtmotorista.model.email}"/>
 
-						<h:outputLabel id="lblStatus" value="Status" />
-						<p:inputText
-							id="txtStatus"
-							label="lblStatus"
-							value="#{crtmotorista.model.status}" />
-						<!--
-						<h:selectOneMenu label="Status" value="#{crtmotorista.model.status}" id="ctrStatus" >
+						<h:outputLabel id="lblStatus" value="Status" for="cbxStatus" />
+						<h:selectOneMenu label="Status" value="#{crtmotorista.model.status}" id="cbxStatus" >
 							<f:selectItems
 								value="#{crtmotorista.statusList}"
 								var="vStatusMotorista"
-								itemLabel="#{vStatusMotorista}"
+								itemLabel="#{vStatusMotorista.description}"
 								itemValue="#{vStatusMotorista}"/>
 						</h:selectOneMenu>
-						-->
+						
 						<h:outputLabel id="lblAdmissao" value="Admissao" />
 						<p:calendar
 							id="txtAdmissao"

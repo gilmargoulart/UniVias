@@ -1,18 +1,13 @@
 package ejb;
 
 import java.util.List;
-
-import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-
 import model.Motorista;
 
-
 @Stateless
-@LocalBean
 public class MotoristaBean implements MotoristaBeanLocal {
 	
 	@PersistenceContext(name="UniviasContext")
@@ -47,7 +42,7 @@ public class MotoristaBean implements MotoristaBeanLocal {
 		Query q = em.createNamedQuery("getAllMotorista");
 		return q.getResultList();
 	}
-
+	
 	/*@Override
 	public List<Inquilino> getTop10() {
 		Query q = em.createNamedQuery("getAllInquilino");
