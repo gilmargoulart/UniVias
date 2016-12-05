@@ -14,21 +14,18 @@
     <h:body >
         <div align="center">
             <p:layout style="min-width:1020px;max-width:1020px;min-height:600px">  
-                <p:layoutUnit position="north" size="100">  
-                    <h:graphicImage url="http://www.univille.edu.br/templates/source/8/images/pages/logo.png" width="90px" height="81px"/>
+                <p:layoutUnit position="north" size="60" >  
+                    <div align="left">
+                    	<h:graphicImage  url="http://www.univille.edu.br/templates/source/8/images/pages/logo.png" width="50px" height="41px" />
+                    </div>
                 </p:layoutUnit>
  				
                 <p:layoutUnit position="west" size="220" style="z-index=2500"> 
                     <ui:insert name="menu">
                         <h:form>
                         	<p:growl id="grolwMasterPage" showDetail="true" sticky="true" />
-                            <p:megaMenu 
-                            	orientation="vertical"
-                            	style="margin-top:20px">
-                            	
-                            	<p:submenu icon="ui-icon-contact" label="Cadastros" >
-                            		<p:column>
-                            			<p:submenu label="Cadastros">
+                            <p:menu style="width: 200px">
+                               <p:submenu label="Cadastros">
 	                            			<p:menuitem value="Contrato" url="FrmContrato.xhtml"/>
 	                            			<p:menuitem value="Motorista" url="FrmMotorista.xhtml"/>
 	                            			<p:menuitem value="Setor" url="FrmSetor.xhtml"/>
@@ -37,11 +34,7 @@
 	                            			<p:menuitem value="Usuário" url="FrmUsuario.xhtml"/>
 	                            			<p:menuitem value="Veículo" url="FrmVeiculo.xhtml"/>
                             			</p:submenu>
-                            		</p:column>
-                            	</p:submenu>
-                            	
-                            	<p:submenu icon="fa fa-fw fa-money" label="Financeiro">
-                            		<p:column>
+                            			
                             			<p:submenu label="Contas a receber">
                             				<p:menuitem value="Universitários" url="#"/>
                             				<p:menuitem value="Gerar mensalidades" url="#"/>
@@ -49,30 +42,10 @@
                             			<p:submenu label="Contas a pagar">
                             				<p:menuitem value="Despesas" url="#"/>
                             			</p:submenu>
-                            		</p:column>
-                            	</p:submenu>
-                            	
-                            	<p:menuitem icon="fa fa-fw fa-close" action="#{crtmasterpage.logoff()}" title="Sair">Sair</p:menuitem>
-                            
-                            </p:megaMenu>
-                            
-                            <!--
-                            <p:menu style="width: 200px">
-                                <p:submenu label="Cadastros">
-                                    <p:menuitem value="Contrato" icon="ui-icon-contact" url="FrmContrato.xhtml"/>         
-                                    <p:menuitem value="Financeiro" icon="ui-icon-contact" url="FrmFinanceiro.xhtml"/>
-                                    <p:menuitem value="Inquilino" icon="ui-icon-contact" url="FrmInquilino.xhtml"/>
-                                    <p:menuitem value="Motorista" icon="ui-icon-contact" url="FrmMotorista.xhtml"/>
-                                    <p:menuitem value="Setor" icon="ui-icon-contact" url="FrmSetor.xhtml"/>
-                                    <p:menuitem value="Transporte" icon="ui-icon-contact" url="FrmTransporte.xhtml"/>
-                                    <p:menuitem value="Universidade" icon="ui-icon-contact" url="FrmUniversidade.xhtml"/>
-                                    <p:menuitem value="Universitário" icon="ui-icon-contact" url="FrmUniversitario.xhtml"/>
-                                    <p:menuitem value="Usuário" icon="ui-icon-contact" url="FrmUsuario.xhtml"/>
-                                    <p:menuitem value="Veículo" icon="ui-icon-contact" url="FrmVeiculo.xhtml"/>
-                                </p:submenu>
+                            			<p:submenu label="...">
+                            				<p:menuitem icon="fa fa-fw fa-close" action="#{crtmasterpage.logoff()}" title="Sair">Sair</p:menuitem>
+                            			</p:submenu>
                             </p:menu>
-                            -->
-                        
                         </h:form>
                     </ui:insert>
                 </p:layoutUnit>  
