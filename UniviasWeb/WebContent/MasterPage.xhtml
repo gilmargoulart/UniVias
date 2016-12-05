@@ -16,7 +16,11 @@
             <p:layout style="min-width:1020px;max-width:1020px;min-height:600px">  
                 <p:layoutUnit position="north" size="60" >  
                     <div align="left">
-                    	<h:graphicImage  url="http://www.univille.edu.br/templates/source/8/images/pages/logo.png" width="50px" height="41px" />
+                    	<h:graphicImage
+                    		url="http://www.univille.edu.br/templates/source/8/images/pages/logo.png"
+                    		width="50px"
+                    		height="41px"
+                    		onclick="index.html" />
                     </div>
                 </p:layoutUnit>
  				
@@ -24,27 +28,26 @@
                     <ui:insert name="menu">
                         <h:form>
                         	<p:growl id="grolwMasterPage" showDetail="true" sticky="true" />
-                            <p:menu style="width: 200px">
+                            <p:menu style="width: 200px" id="idMenu">
                                <p:submenu label="Cadastros">
-	                            			<p:menuitem value="Contrato" url="FrmContrato.xhtml"/>
-	                            			<p:menuitem value="Motorista" url="FrmMotorista.xhtml"/>
-	                            			<p:menuitem value="Setor" url="FrmSetor.xhtml"/>
-	                            			<p:menuitem value="Universidade" url="FrmUniversidade.xhtml"/>
-	                            			<p:menuitem value="Universitário" url="FrmUniversitario.xhtml"/>
-	                            			<p:menuitem value="Usuário" url="FrmUsuario.xhtml"/>
-	                            			<p:menuitem value="Veículo" url="FrmVeiculo.xhtml"/>
-                            			</p:submenu>
-                            			
-                            			<p:submenu label="Contas a receber">
-                            				<p:menuitem value="Universitários" url="#"/>
-                            				<p:menuitem value="Gerar mensalidades" url="#"/>
-                            			</p:submenu>
-                            			<p:submenu label="Contas a pagar">
-                            				<p:menuitem value="Despesas" url="#"/>
-                            			</p:submenu>
-                            			<p:submenu label="...">
-                            				<p:menuitem icon="fa fa-fw fa-close" action="#{crtmasterpage.logoff()}" title="Sair">Sair</p:menuitem>
-                            			</p:submenu>
+                        			<p:menuitem value="Contrato" url="FrmContrato.xhtml"/>
+                        			<p:menuitem value="Motorista" url="FrmMotorista.xhtml"/>
+                        			<p:menuitem value="Setor" url="FrmSetor.xhtml"/>
+                        			<p:menuitem value="Universidade" url="FrmUniversidade.xhtml"/>
+                        			<p:menuitem value="Universitário" url="FrmUniversitario.xhtml"/>
+                        			<p:menuitem value="Usuário" url="FrmUsuario.xhtml"/>
+                        			<p:menuitem value="Veículo" url="FrmVeiculo.xhtml"/>
+                       			</p:submenu>
+                       			<p:submenu label="Contas a receber">
+                       				<p:menuitem value="Universitários" url="#"/>
+                       				<p:menuitem value="Gerar mensalidades" url="#"/>
+                       			</p:submenu>
+                       			<p:submenu label="Contas a pagar">
+                       				<p:menuitem value="Despesas" url="#"/>
+                       			</p:submenu>
+                       			<p:submenu label="...">
+                       				<p:menuitem icon="fa fa-fw fa-close" action="#{crtmasterpage.logoff()}" title="Sair">Sair</p:menuitem>
+                       			</p:submenu>
                             </p:menu>
                         </h:form>
                     </ui:insert>

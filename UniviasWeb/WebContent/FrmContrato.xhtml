@@ -60,7 +60,6 @@
 									<f:convertDateTime pattern="dd/MM/yyyy" />
 							</h:outputText>
 						</p:column>
-						
 						<f:facet name="footer">
 					
 						
@@ -101,6 +100,7 @@
 						
 						<h:outputLabel id="lblContrato" value="Contrato" />
 						<p:inputTextarea
+							value="#{crtcontrato.model.textoContrato}"
 							rows="10"
 							cols="80"
 							scrollHeight="5"
