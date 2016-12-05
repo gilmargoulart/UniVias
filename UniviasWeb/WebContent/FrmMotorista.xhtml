@@ -42,7 +42,7 @@
 							<f:facet name="header">Nome</f:facet>
 							<h:outputText value="#{vMotorista.nome}" />
 						</p:column>
-						<p:column>
+						<p:column width="100">
 							<f:facet name="header">Telefone</f:facet>
 							<h:outputText value="#{vMotorista.telefone}"/>
 						</p:column>
@@ -50,17 +50,17 @@
 							<f:facet name="header">E-mail</f:facet>
 							<h:outputText value="#{vMotorista.email}"/>
 						</p:column>
-						<p:column>
+						<p:column width="40">
 							<f:facet name="header">Status</f:facet>
 							<h:outputText value="#{vMotorista.status.description}"/>
 						</p:column>
-						<p:column>
+						<p:column width="60">
 							<f:facet name="header">Admissão</f:facet>
 							<h:outputText value="#{vMotorista.admissao}">
 								<f:convertDateTime pattern="dd/MM/yyyy" />
 							</h:outputText>
 						</p:column>
-						<p:column>
+						<p:column width="60">
 							<f:facet name="header">Demissão</f:facet>
 							<h:outputText value="#{vMotorista.demissao}">
 								<f:convertDateTime pattern="dd/MM/yyyy" />
