@@ -78,8 +78,11 @@
 						<p:inputText
 							id="txtTitulo"
 							label="lblTitulo"
-							value="#{crtcontrato.model.titulo}"/>						
-					
+							value="#{crtcontrato.model.titulo}"
+							required="true"							/>
+						<p:message for="txtTitulo"  />
+            			<h:outputText value="" />
+            			
 						<h:outputLabel id="lblContratoInicio" value="Contrato Inicio" />
 						<p:calendar
 							id="txtContratoInicio"
@@ -104,7 +107,12 @@
 							rows="10"
 							cols="80"
 							scrollHeight="5"
-							autoResize="false"/>
+							autoResize="false"
+							required="true">
+							<f:validateLength minimum="20" /> 
+						</p:inputTextarea>
+						<p:message for="lblContrato" />
+          				<h:outputText value="" />
 						
 						<f:facet name="footer">
 							<p:commandButton
@@ -112,7 +120,7 @@
 								id="cbOK"
 								action="#{crtcontrato.save()}"
 								onsuccess="PF('dlg1').hide()"
-								update=":frmContrato:tbDadosContrato"
+								6update=":frmContrato:tbDadosContrato"
 								icon="fa fa-fw fa-save"
 								/>
 							<p:commandButton
