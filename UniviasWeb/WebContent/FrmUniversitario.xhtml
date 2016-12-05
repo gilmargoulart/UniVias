@@ -78,30 +78,51 @@
 						<p:inputText
 							id="txtNome"
 							label="lblNome"
-							value="#{crtuniversitario.model.nome}"/>
+							value="#{crtuniversitario.model.nome}"
+							required="true"/>
+						<p:message for="txtNome"/>
+            			<h:outputText value="" />
 						
 						<h:outputLabel id="lblTelefone" value="Telefone" />
 						<p:inputText
 							id="txtTelefone"
 							label="lblTelefone"
-							value="#{crtuniversitario.model.telefone}"/>
+							value="#{crtuniversitario.model.telefone}">
+							<f:validateRequired/>
+						</p:inputText>
+						<p:message for="txtTelefone"/>
+           				<h:outputText value=""/>
+						
 							
 						<h:outputLabel id="lblE-mail" value="E-mail" />
 						<p:inputText
 							id="txtE-mail"
 							label="lblE-mail"
-							value="#{crtuniversitario.model.email}"/>
+							value="#{crtuniversitario.model.email}"
+							required="true" 
+							/>
+						<p:message for="txtE-mail"/>
+            			<h:outputText value=""/>
 						
 						<h:outputLabel id="lblDocumentoIdentificacao" value="Documento Identificacao" />
 						<p:inputText
 							id="txtDocumentoIdentificacao"
 							label="lblDocumentoIdentificacao"
-							value="#{crtuniversitario.model.doctoIdentificacao}"/>
+							value="#{crtuniversitario.model.doctoIdentificacao}">
+							<f:validateRequired/>
+						</p:inputText>
+						<p:message for="txtDocumentoIdentificacao"/>
+           				<h:outputText value=""/>
+							
+							
 						<h:outputLabel id="lblUniversidade" value="Universidade" />
 						<p:inputText
 							id="txtUniversidade"
 							label="lblUniversidade"
-							value="#{crtuniversitario.model.universidade}"/>
+							value="#{crtuniversitario.model.universidade}"
+							required="true"/>
+						<p:message for="txtUniversidade"/>
+            			<h:outputText value="" />
 						
 						<!--
 						<h:outputLabel id="lblLocalizacoes" value="Localizacoes" />
@@ -124,7 +145,9 @@
 								action="#{crtuniversitario.save()}"
 								onsuccess="PF('dlg1').hide()"
 								update=":frmUniversitario:tbDadosuniversitario"
-								icon="fa fa-fw fa-save" />
+								icon="fa fa-fw fa-save"
+								validateClient="true" 
+								/>
 							<p:commandButton
 								value="Voltar"
 								id="cbCancelar"

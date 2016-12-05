@@ -92,8 +92,8 @@
 							value="#{crtmotorista.modelMotorista.nome}"
 							required="true" 
 							/>
-						<p:message for="txtNome"  />
-            			<h:outputText value="" />
+						<p:message for="txtNome"/>
+            			<h:outputText value=""/>
 			
 	                   						
 						<h:outputLabel id="lblTelefone" value="Telefone" />
@@ -101,10 +101,10 @@
 							id="txtTelefone"
 							label="lblTelefone"
 							value="#{crtmotorista.modelMotorista.telefone}">
-							<f:validateDoubleRange minimum="8" maximum="13"/>
+							<f:validateRequired />
 						</p:inputText>
-						<p:message for="txtTelefone" />
-           				<h:outputText value="" />
+						<p:message for="txtTelefone"/>
+           				<h:outputText value=""/>
 							
 						<h:outputLabel id="lblE-mail" value="E-mail" />
 						<p:inputText
@@ -113,10 +113,10 @@
 							value="#{crtmotorista.modelMotorista.email}"
 							required="true" 
 							/>
-						<p:message for="txtE-mail"  />
-            			<h:outputText value="" />
+						<p:message for="txtE-mail"/>
+            			<h:outputText value=""/>
 
-						<h:outputLabel id="lblStatus" value="Status" for="cbxStatus" />
+						<h:outputLabel id="lblStatus" value="Status" for="cbxStatus"/>
 						<h:selectOneMenu label="Status" value="#{crtmotorista.modelMotorista.status}" id="cbxStatus" >
 							<f:selectItems
 								value="#{crtmotorista.statusList}"
@@ -125,7 +125,7 @@
 								itemValue="#{vStatusMotorista}"/>
 						</h:selectOneMenu>
 						
-						<h:outputLabel id="lblAdmissao" value="Admissão" />
+						<h:outputLabel id="lblAdmissao" value="Admissão"/>
 						<p:calendar
 							id="txtAdmissao"
 							label="lblAdmissao"
@@ -134,7 +134,7 @@
 							pattern="dd/MM/yyyy"
 							mask="true"/>
 							
-						<h:outputLabel id="lblDemissao" value="Demissão" />
+						<h:outputLabel id="lblDemissao" value="Demissão"/>
 						<p:calendar
 							id="txtDemissao"
 							label="lblDemissao"

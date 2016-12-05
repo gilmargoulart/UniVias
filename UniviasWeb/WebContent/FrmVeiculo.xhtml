@@ -81,37 +81,61 @@
 						<p:inputText
 							id="txtMarca"
 							label="lblMarca"
-							value="#{crtveiculo.model.marca}"/>
+							value="#{crtveiculo.model.marca}"
+							required="true" 
+							/>
+						<p:message for="txtMarca"/>
+            			<h:outputText value=""/>
 						
 						<h:outputLabel id="lblModelo" value="Modelo" />
 						<p:inputText
 							id="txtModelo"
 							label="lblModelo"
-							value="#{crtveiculo.model.modelo}"/>
+							value="#{crtveiculo.model.modelo}"
+							required="true" 
+							/>
+						<p:message for="txtModelo"/>
+            			<h:outputText value=""/>
 							
 						<h:outputLabel id="lblAno" value="Ano" />
 						<p:inputText
 							id="txtAno"
 							label="lblAno"
-							value="#{crtveiculo.model.ano}"/>
+							value="#{crtveiculo.model.ano}">
+							<f:validateRequired/>
+						</p:inputText>
+						<p:message for="txtAno"/>
+           				<h:outputText value=""/>
 						
 						<h:outputLabel id="lblCor" value="Cor" />
 						<p:inputText
 							id="txtCor"
 							label="lblCor"
-							value="#{crtveiculo.model.cor}"/>
+							value="#{crtveiculo.model.cor}"
+							required="true" 
+							/>
+						<p:message for="txtCor"/>
+            			<h:outputText value=""/>
 							
 						<h:outputLabel id="lblPlaca" value="Placa" />
 						<p:inputText
 							id="txtPlaca"
 							label="lblPlaca"
-							value="#{crtveiculo.model.placa}"/>
+							value="#{crtveiculo.model.placa}">
+							<f:validateRequired/>
+						</p:inputText>
+						<p:message for="txtPlaca"/>
+           				<h:outputText value=""/>
 							
 						<h:outputLabel id="lblLotacao" value="Lotacao" />
 						<p:inputText
 							id="txtLotacao"
 							label="lblLotacao"
-							value="#{crtveiculo.model.lotacao}"/>
+							value="#{crtveiculo.model.lotacao}">
+							<f:validateRequired/>
+						</p:inputText>
+						<p:message for="txtLotacao"/>
+           				<h:outputText value=""/>
 												
 						<f:facet name="footer">
 							<p:commandButton
@@ -120,7 +144,9 @@
 								action="#{crtveiculo.save()}"
 								onsuccess="PF('dlg1').hide()"
 								update=":frmVeiculo:tbDadosveiculo"
-								icon="fa fa-fw fa-save"/>
+								icon="fa fa-fw fa-save"
+								validateClient="true" 
+								/>
 							<p:commandButton
 								value="Voltar"
 								id="cbCancelar"

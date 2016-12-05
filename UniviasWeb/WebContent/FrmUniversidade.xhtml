@@ -76,19 +76,29 @@
 						<p:inputText
 							id="txtNomeCompleto"
 							label="lblNomeCompleto"
-							value="#{crtuniversidade.model.nomeCompleto}"/>
-						
+							value="#{crtuniversidade.model.nomeCompleto}"
+							required="true"/>
+						<p:message for="txtNomeCompleto"/>
+            			<h:outputText value="" />
+            			
 						<h:outputLabel id="lblNomeFantasia" value="Nome Fantasia" />
 						<p:inputText
 							id="txtNomeFantasia"
 							label="lblNomeFantasia"
-							value="#{crtuniversidade.model.nomeFantasia}"/>
+							value="#{crtuniversidade.model.nomeFantasia}"
+							required="true"/>
+						<p:message for="txtNomeFantasia"/>
+            			<h:outputText value="" />
 							
 						<h:outputLabel id="lblLocalizacao" value="Localizacao" />
 						<p:inputText
 							id="txtLocalizacao"
 							label="lblLocalizacao"
-							value="#{crtuniversidade.model.localizacao}"/>
+							value="#{crtuniversidade.model.localizacao}"
+							required="true"/>
+						<p:message for="txtLocalizacao"/>
+            			<h:outputText value="" />
+							
 					
 						<f:facet name="footer">
 							<p:commandButton
@@ -97,7 +107,9 @@
 								action="#{crtuniversidade.save()}"
 								onsuccess="PF('dlg1').hide()"
 								update=":frmUniversidade:tbDadosuniversidade"
-								icon="fa fa-fw fa-save" />
+								icon="fa fa-fw fa-save"
+								validateClient="true" 
+								/>
 							<p:commandButton
 								value="Voltar"
 								id="cbCancelar"

@@ -79,7 +79,7 @@
 							id="txtTitulo"
 							label="lblTitulo"
 							value="#{crtcontrato.model.titulo}"
-							required="true"							/>
+							required="true"/>
 						<p:message for="txtTitulo"  />
             			<h:outputText value="" />
             			
@@ -120,8 +120,9 @@
 								id="cbOK"
 								action="#{crtcontrato.save()}"
 								onsuccess="PF('dlg1').hide()"
-								6update=":frmContrato:tbDadosContrato"
+								update=":frmContrato:tbDadosContrato"
 								icon="fa fa-fw fa-save"
+								validateClient="true"
 								/>
 							<p:commandButton
 								value="Voltar"
