@@ -82,26 +82,39 @@
 				widgetVar="dlg1"
 				appendTo="@(body)">
 				<h:form id="form">
-					<p:messages />
+					<p:messages autoUpdate="true" />
 					<h:panelGrid id="formDetail" columns="2">
 					
 						<h:outputLabel id="lblNome" value="Nome" />
 						<p:inputText
 							id="txtNome"
 							label="lblNome"
-							value="#{crtmotorista.modelMotorista.nome}"/>
-						
+							value="#{crtmotorista.modelMotorista.nome}"
+							required="true" 
+							/>
+						<p:message for="txtNome"  />
+            			<h:outputText value="#{crtmotorista.modelMotorista.nome}" />
+			
+	                   						
 						<h:outputLabel id="lblTelefone" value="Telefone" />
 						<p:inputText
 							id="txtTelefone"
 							label="lblTelefone"
-							value="#{crtmotorista.modelMotorista.telefone}"/>
+							value="#{crtmotorista.modelMotorista.telefone}">
+							<f:validateDoubleRange minimum="8" maximum="13"/>
+						</p:inputText>
+						<p:message for="txtTelefone" />
+           				<h:outputText value="#{crtmotorista.modelMotorista.telefone}" />
 							
 						<h:outputLabel id="lblE-mail" value="E-mail" />
 						<p:inputText
 							id="txtE-mail"
 							label="lblE-mail"
-							value="#{crtmotorista.modelMotorista.email}"/>
+							value="#{crtmotorista.modelMotorista.email}"
+							required="true" 
+							/>
+						<p:message for="txtE-mail"  />
+            			<h:outputText value="#{crtmotorista.modelMotorista.email}" />
 
 						<h:outputLabel id="lblStatus" value="Status" for="cbxStatus" />
 						<h:selectOneMenu label="Status" value="#{crtmotorista.modelMotorista.status}" id="cbxStatus" >
@@ -138,6 +151,7 @@
 								onsuccess="PF('dlg1').hide()"
 								update=":frmMotorista:tbDadosmotorista"
 								icon="fa fa-fw fa-save"
+								validateClient="true"
 								/>
 							<p:commandButton
 								value="Voltar"
