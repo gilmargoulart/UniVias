@@ -48,16 +48,16 @@
 							<h:outputText value="#{vContrato.titulo}" />
 						</p:column>
 						
-						<p:column>
-							<f:facet name="header">Contrato Inicio</f:facet>
+						<p:column width="60">
+							<f:facet name="header">Início</f:facet>
 							<h:outputText value="#{vContrato.periodoInicial}" >
 								<f:convertDateTime pattern="dd/MM/yyyy" />
 							</h:outputText>
 						</p:column>
-						<p:column>
-							<f:facet name="header">Contrato Fim</f:facet>
+						<p:column width="60">
+							<f:facet name="header">Fim</f:facet>
 							<h:outputText value="#{vContrato.periodoFinal}">
-									<f:convertDateTime pattern="dd/MM/yyyy" />
+								<f:convertDateTime pattern="dd/MM/yyyy" />
 							</h:outputText>
 						</p:column>
 						<f:facet name="footer">
