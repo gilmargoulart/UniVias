@@ -1,0 +1,6 @@
+*.classpath
+UniViasEJB/.classpath
+.metadata/
+.recommenders/
+UniViasWeb/.classpath
+*.war
