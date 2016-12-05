@@ -1,7 +1,6 @@
 package model;
 
 import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -39,7 +38,7 @@ public class Contrato {
 	private String titulo;
 	
 	@Temporal(value = TemporalType.DATE)
-	private Date periodoInicial;
+	private Date periodoInicial = new Date();
 	
 	@Temporal(value = TemporalType.DATE)
 	private Date periodoFinal;

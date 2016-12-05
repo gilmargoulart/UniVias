@@ -15,21 +15,29 @@
 		<body>
 			<h:form id="frmMotorista">
 				<p:panel header="Manter Motorista">
+					<p:toolbar id="tbActions">
+						<f:facet name="left">
+							<p:commandButton value="Inlcuir" update=":form" oncomplete="PF('dlg1').show()" action="#{crtmotorista.create()}" icon="fa fa-plus" />
+						</f:facet>
+					</p:toolbar>
+					<p:sticky target="tbActions" />
 					<p:dataTable
 						id="tbDadosmotorista"
 						value="#{crtmotorista.getAll()}"
-						selection="#{crtmotorista.model}"
+						selection="#{crtmotorista.modelMotorista}"
 						selectionMode="single"
 						var="vMotorista"
 						rowKey="#{vMotorista.id}">
 						
-						<f:facet name="header">Lista de Motorista</f:facet>
-						<!--
-						<p:column>
-							<f:facet name="header">Ação de usuário</f:facet>
-							<h:commandButton action="PF('dlg1').show()">Botão</h:commandButton>
+						<f:facet name="header">
+							<h:outputText value="Lista de Motorista" />
+						</f:facet>
+						
+						<p:column style="width:32px;text-align: center">
+							<p:commandButton update=":form" oncomplete="PF('dlg1').show()" icon="fa fa-fw fa-edit" title="Editar">
+								<f:setPropertyActionListener value="#{vMotorista}" target="#{crtmotorista.modelMotorista}" />
+							</p:commandButton>
 						</p:column>
-						-->
 						<p:column>
 							<f:facet name="header">Nome</f:facet>
 							<h:outputText value="#{vMotorista.nome}" />
@@ -44,29 +52,23 @@
 						</p:column>
 						<p:column>
 							<f:facet name="header">Status</f:facet>
-							<h:outputText value="#{vMotorista.status}"/>
+							<h:outputText value="#{vMotorista.status.description}"/>
 						</p:column>
 						<p:column>
-							<f:facet name="header">Admissao</f:facet>
-							<h:outputText value="#{vMotorista.admissao}"/>
+							<f:facet name="header">Admissão</f:facet>
+							<h:outputText value="#{vMotorista.admissao}">
+								<f:convertDateTime pattern="dd/MM/yyyy" />
+							</h:outputText>
 						</p:column>
 						<p:column>
-							<f:facet name="header">Demissao</f:facet>
-							<h:outputText value="#{vMotorista.demissao}"/>
+							<f:facet name="header">Demissão</f:facet>
+							<h:outputText value="#{vMotorista.demissao}">
+								<f:convertDateTime pattern="dd/MM/yyyy" />
+							</h:outputText>
 						</p:column>
 											
 						<f:facet name="footer">
-							<p:commandButton
-								value="Incluir"
-								id="cbIncluir"
-								action="#{crtmotorista.create()}"
-								onsuccess="PF('dlg1').show()"
-								update=":frmMotorista"/>
-							<p:commandButton
-								value="Alterar"
-								id="cbAlterar"
-								onsuccess="PF('dlg1').show()"
-								update=":frmMotorista"/>
+							
 						</f:facet>
 					</p:dataTable>
 				</p:panel>
@@ -74,64 +76,90 @@
 			
 			<!--  -->
 			
-			<p:dialog width="500px" height="300px" id="detailDialog"
+			<p:dialog id="detailDialog"
 				modal="true"
 				header="Detalhe do Motorista"
 				widgetVar="dlg1"
 				appendTo="@(body)">
 				<h:form id="form">
+					<p:messages autoUpdate="true" />
 					<h:panelGrid id="formDetail" columns="2">
 					
 						<h:outputLabel id="lblNome" value="Nome" />
 						<p:inputText
 							id="txtNome"
 							label="lblNome"
-							value="#{crtmotorista.model.nome}"/>
-						
+							value="#{crtmotorista.modelMotorista.nome}"
+							required="true" 
+							/>
+						<p:message for="txtNome"/>
+            			<h:outputText value=""/>
+			
+	                   						
 						<h:outputLabel id="lblTelefone" value="Telefone" />
 						<p:inputText
 							id="txtTelefone"
 							label="lblTelefone"
-							value="#{crtmotorista.model.telefone}"/>
+							value="#{crtmotorista.modelMotorista.telefone}">
+							<f:validateRequired />
+						</p:inputText>
+						<p:message for="txtTelefone"/>
+           				<h:outputText value=""/>
 							
 						<h:outputLabel id="lblE-mail" value="E-mail" />
 						<p:inputText
 							id="txtE-mail"
 							label="lblE-mail"
-							value="#{crtmotorista.model.email}"/>
+							value="#{crtmotorista.modelMotorista.email}"
+							required="true" 
+							/>
+						<p:message for="txtE-mail"/>
+            			<h:outputText value=""/>
+
+						<h:outputLabel id="lblStatus" value="Status" for="cbxStatus"/>
+						<h:selectOneMenu label="Status" value="#{crtmotorista.modelMotorista.status}" id="cbxStatus" >
+							<f:selectItems
+								value="#{crtmotorista.statusList}"
+								var="vStatusMotorista"
+								itemLabel="#{vStatusMotorista.description}"
+								itemValue="#{vStatusMotorista}"/>
+						</h:selectOneMenu>
 						
-						<h:outputLabel id="lblStatus" value="Status" />
-						<p:inputText
-							id="txtStatus"
-							label="lblStatus"
-							value="#{crtmotorista.model.status}"/>
-						
-						<h:outputLabel id="lblAdmissao" value="Admissao" />
-						<p:inputText
+						<h:outputLabel id="lblAdmissao" value="Admissão"/>
+						<p:calendar
 							id="txtAdmissao"
 							label="lblAdmissao"
-							value="#{crtmotorista.model.admissao}"/>
+							value="#{crtmotorista.modelMotorista.admissao}"
+							showOn="button"
+							pattern="dd/MM/yyyy"
+							mask="true"/>
 							
-						<h:outputLabel id="lblDemissao" value="Demissao" />
-						<p:inputText
+						<h:outputLabel id="lblDemissao" value="Demissão"/>
+						<p:calendar
 							id="txtDemissao"
 							label="lblDemissao"
-							value="#{crtmotorista.model.demissao}"/>
+							value="#{crtmotorista.modelMotorista.demissao}"
+							showOn="button"
+							pattern="dd/MM/yyyy"
+							mask="true"/>
 							
 						<f:facet name="footer">
 							<p:commandButton
-								value="OK"
+								value="Salvar"
 								id="cbOK"
 								action="#{crtmotorista.save()}"
 								onsuccess="PF('dlg1').hide()"
 								update=":frmMotorista:tbDadosmotorista"
+								icon="fa fa-fw fa-save"
+								validateClient="true"
 								/>
 							<p:commandButton
-								value="Cancelar"
+								value="Voltar"
 								id="cbCancelar"
 								action="#{crtmotorista.create()}"
 								onsuccess="PF('dlg1').hide()"
-								update=":frmMotorista:tbDadosmotorista"/>	
+								update=":frmMotorista:tbDadosmotorista"
+								icon="fa fa-fw fa-arrow-left"/>	
 						</f:facet>
 					</h:panelGrid>
 				</h:form>

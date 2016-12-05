@@ -1,8 +1,8 @@
 package enums;
 
 public enum TipoDocumentoFinanceiro {
-	PAGAR('A')
-	,RECEBER('I');
+	PAGAR('P')
+	,RECEBER('R');
 	
 	private char tipo;
 	

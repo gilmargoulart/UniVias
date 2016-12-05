@@ -1,7 +1,6 @@
 package model;
 
 import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -15,6 +14,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Size;
 
 import enums.Status;
 
@@ -36,6 +36,7 @@ public class Motorista {
 	private long id;
 	
 	@Column(length = 120)
+	@Size(min=3, message="Nome é obrigatório.")
 	private String nome;
 	
 	@Column(length = 400)
@@ -45,14 +46,18 @@ public class Motorista {
 	private String telefone;
 	
 	@Temporal(value = TemporalType.DATE)
-	private Date admissao;
+	private Date admissao = new Date();
 	
 	@Temporal(value = TemporalType.DATE)
 	private Date demissao;
 
-	@Column(length = 1, columnDefinition = "char(1)")
-	@Enumerated(EnumType.STRING)
-	private Status status;
+	@Column(length = 1)
+	@Enumerated(EnumType.ORDINAL)
+	private Status status = Status.ATIVO;
+	
+	public Motorista(){
+		//
+	}
 	
 	public Inquilino getInquilino() {
 		return inquilino;
@@ -101,6 +106,7 @@ public class Motorista {
 	public void setAdmissao(Date admissao) {
 		this.admissao = admissao;
 	}
+	
 
 	public Date getDemissao() {
 		return demissao;

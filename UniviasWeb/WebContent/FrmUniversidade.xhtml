@@ -15,6 +15,12 @@
 		<body>
 			<h:form id="frmUniversidade">
 				<p:panel header="Manter Universidade">
+					<p:toolbar id="tbActions">
+						<f:facet name="left">
+							<p:commandButton value="Inlcuir" update=":form" oncomplete="PF('dlg1').show()" action="#{crtuniversidade.create()}" icon="fa fa-plus" />
+						</f:facet>
+					</p:toolbar>
+					<p:sticky target="tbActions" />
 					<p:dataTable
 						id="tbDadosuniversidade"
 						value="#{crtuniversidade.getAll()}"
@@ -24,6 +30,12 @@
 						rowKey="#{vUniversidade.id}">
 						
 						<f:facet name="header">Lista de Universidades</f:facet>
+						<p:column style="width:32px;text-align: center">
+							<p:commandButton  update=":form" oncomplete="PF('dlg1').show()" icon="fa fa-fw fa-edit" title="Editar">
+								<f:setPropertyActionListener value="#{vUniversidade}" target="#{crtuniversidade.model}"  />
+							</p:commandButton>							
+						</p:column>
+						
 						<!--
 						<p:column>
 							<f:facet name="header">Ação de usuário</f:facet>
@@ -44,17 +56,7 @@
 						</p:column>
 						
 						<f:facet name="footer">
-							<p:commandButton
-								value="Incluir"
-								id="cbIncluir"
-								action="#{crtuniversidade.create()}"
-								onsuccess="PF('dlg1').show()"
-								update=":frmUniversidade"/>
-							<p:commandButton
-								value="Alterar"
-								id="cbAlterar"
-								onsuccess="PF('dlg1').show()"
-								update=":frmUniversidade"/>
+						
 						</f:facet>
 					</p:dataTable>
 				</p:panel>
@@ -62,7 +64,7 @@
 			
 			<!--  -->
 			
-			<p:dialog width="500px" height="300px" id="detailDialog"
+			<p:dialog id="detailDialog"
 				modal="true"
 				header="Detalhe da Universidade"
 				widgetVar="dlg1"
@@ -74,34 +76,47 @@
 						<p:inputText
 							id="txtNomeCompleto"
 							label="lblNomeCompleto"
-							value="#{crtuniversidade.model.nomeCompleto}"/>
-						
+							value="#{crtuniversidade.model.nomeCompleto}"
+							required="true"/>
+						<p:message for="txtNomeCompleto"/>
+            			<h:outputText value="" />
+            			
 						<h:outputLabel id="lblNomeFantasia" value="Nome Fantasia" />
 						<p:inputText
 							id="txtNomeFantasia"
 							label="lblNomeFantasia"
-							value="#{crtuniversidade.model.nomeFantasia}"/>
+							value="#{crtuniversidade.model.nomeFantasia}"
+							required="true"/>
+						<p:message for="txtNomeFantasia"/>
+            			<h:outputText value="" />
 							
 						<h:outputLabel id="lblLocalizacao" value="Localizacao" />
 						<p:inputText
 							id="txtLocalizacao"
 							label="lblLocalizacao"
-							value="#{crtuniversidade.model.localizacao}"/>
+							value="#{crtuniversidade.model.localizacao}"
+							required="true"/>
+						<p:message for="txtLocalizacao"/>
+            			<h:outputText value="" />
+							
 					
 						<f:facet name="footer">
 							<p:commandButton
-								value="OK"
+								value="Salvar"
 								id="cbOK"
 								action="#{crtuniversidade.save()}"
 								onsuccess="PF('dlg1').hide()"
 								update=":frmUniversidade:tbDadosuniversidade"
+								icon="fa fa-fw fa-save"
+								validateClient="true" 
 								/>
 							<p:commandButton
-								value="Cancelar"
+								value="Voltar"
 								id="cbCancelar"
 								action="#{crtuniversidade.create()}"
 								onsuccess="PF('dlg1').hide()"
-								update=":frmUniversidade:tbDadosuniversidade"/>	
+								update=":frmUniversidade:tbDadosuniversidade"
+								icon="fa fa-fw fa-arrow-left" />
 						</f:facet>
 					</h:panelGrid>
 				</h:form>

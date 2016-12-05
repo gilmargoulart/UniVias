@@ -11,10 +11,17 @@
 		<h:head>
 			<meta charset="UTF-8"/>
 			<title>Manter Setor</title>
+			<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
 		</h:head>
 		<body>
 			<h:form id="frmSetor">
 				<p:panel header="Manter Setor">
+				<p:toolbar id="tbActions">
+						<f:facet name="left">
+							<p:commandButton value="Inlcuir" update=":form" oncomplete="PF('dlg1').show()" action="#{crtsetor.create()}" icon="fa fa-plus" />
+						</f:facet>
+					</p:toolbar>
+					<p:sticky target="tbActions" />
 					<p:dataTable
 						id="tbDadossetor"
 						value="#{crtsetor.getAll()}"
@@ -24,6 +31,11 @@
 						rowKey="#{vSetor.id}">
 						
 						<f:facet name="header">Lista de Setores</f:facet>
+						<p:column style="width:32px;text-align: center">
+							<p:commandButton  update=":form" oncomplete="PF('dlg1').show()" icon="fa fa-fw fa-edit" title="Editar">
+								<f:setPropertyActionListener value="#{vSetor}" target="#{crtsetor.model}"  />
+							</p:commandButton>							
+						</p:column>
 						<!--
 						<p:column>
 							<f:facet name="header">Ação de usuário</f:facet>
@@ -44,17 +56,7 @@
 						</p:column>
 					
 						<f:facet name="footer">
-							<p:commandButton
-								value="Incluir"
-								id="cbIncluir"
-								action="#{crtsetor.create()}"
-								onsuccess="PF('dlg1').show()"
-								update=":frmSetor"/>
-							<p:commandButton
-								value="Alterar"
-								id="cbAlterar"
-								onsuccess="PF('dlg1').show()"
-								update=":frmSetor"/>
+						
 						</f:facet>
 					</p:dataTable>
 				</p:panel>
@@ -87,6 +89,8 @@
 							id="txtVeiculo"
 							label="lblVeiculo"
 							value="#{crtsetor.model.veiculo}"/>
+							
+						
 													
 						<f:facet name="footer">
 							<p:commandButton
@@ -103,6 +107,8 @@
 								onsuccess="PF('dlg1').hide()"
 								update=":frmSetor:tbDadossetor"
 								/>	
+								
+						
 						</f:facet>
 					</h:panelGrid>
 				</h:form>

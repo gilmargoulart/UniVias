@@ -15,6 +15,12 @@
 		<body>
 			<h:form id="frmUsuario">
 				<p:panel header="Manter Usuário">
+					<p:toolbar id="tbActions">
+						<f:facet name="left">
+							<p:commandButton value="Inlcuir" update=":form" oncomplete="PF('dlg1').show()" action="#{crtusuario.create()}" icon="fa fa-plus" />
+						</f:facet>
+					</p:toolbar>
+					<p:sticky target="tbActions" />
 					<p:dataTable
 						id="tbDadosusuario"
 						value="#{crtusuario.getAll()}"
@@ -24,12 +30,11 @@
 						rowKey="#{vUsuario.id}">
 						
 						<f:facet name="header">Lista de Usuários</f:facet>
-						<!--
-						<p:column>
-							<f:facet name="header">Ação de usuário</f:facet>
-							<h:commandButton action="PF('dlg1').show()">Botão</h:commandButton>
+						<p:column style="width:32px;text-align: center">
+						<p:commandButton  update=":form" oncomplete="PF('dlg1').show()" icon="fa fa-fw fa-edit" title="Editar">
+							<f:setPropertyActionListener value="#{vUsuario}" target="#{crtusuario.model}"  />
+						</p:commandButton>
 						</p:column>
-						-->
 						<p:column>
 							<f:facet name="header">Nome</f:facet>
 							<h:outputText value="#{vUsuario.nome}" />
@@ -39,22 +44,12 @@
 							<h:outputText value="#{vUsuario.login}"/>
 						</p:column>
 						<p:column>
-							<f:facet name="header">Permissao</f:facet>
-							<h:outputText value="#{vUsuario.permissao}"/>
+							<f:facet name="header">Permissão</f:facet>
+							<h:outputText value="#{vUsuario.permissao.description}"/>
 						</p:column>
 											
 						<f:facet name="footer">
-							<p:commandButton
-								value="Incluir"
-								id="cbIncluir"
-								action="#{crtusuario.create()}"
-								onsuccess="PF('dlg1').show()"
-								update=":frmUsuario"/>
-							<p:commandButton
-								value="Alterar"
-								id="cbAlterar"
-								onsuccess="PF('dlg1').show()"
-								update=":frmUsuario"/>
+						
 						</f:facet>
 					</p:dataTable>
 				</p:panel>
@@ -62,9 +57,9 @@
 			
 			<!--  -->
 			
-			<p:dialog width="500px" height="300px" id="detailDialog"
+			<p:dialog id="detailDialog"
 				modal="true"
-				header="Detalhe do Usuario"
+				header="Detalhe do Usuário"
 				widgetVar="dlg1"
 				appendTo="@(body)">
 				<h:form id="form">
@@ -83,31 +78,34 @@
 							value="#{crtusuario.model.login}"/>
 							
 						<h:outputLabel id="lblPermissao" value="Permissao" />
-						<p:inputText
-							id="txtPermissao"
-							label="lblPermissao"
-							value="#{crtusuario.model.permissao}"/>
-						
+						<h:selectOneMenu label="Permissão" value="#{crtusuario.model.permissao}" id="cbxNivelPermissao" >
+							<f:selectItems
+								value="#{crtusuario.nivelPermissaoList}"
+								var="vNivelPermissao"
+								itemLabel="#{vNivelPermissao.description}"
+								itemValue="#{vNivelPermissao}"/>
+						</h:selectOneMenu>
 						<h:outputLabel id="lblSenha" value="Senha" />
-						<p:inputText
+						<p:password
 							id="txtSenha"
 							label="lblSenha"
-							value="#{crtusuario.model.senha}"/>
+							value="#{crtusuario.model.senha}" />
 												
 						<f:facet name="footer">
 							<p:commandButton
-								value="OK"
+								value="Salvar"
 								id="cbOK"
 								action="#{crtusuario.save()}"
 								onsuccess="PF('dlg1').hide()"
 								update=":frmUsuario:tbDadosusuario"
-								/>
+								icon="fa fa-fw fa-save" />
 							<p:commandButton
-								value="Cancelar"
+								value="Voltar"
 								id="cbCancelar"
 								action="#{crtfinanceiro.create()}"
 								onsuccess="PF('dlg1').hide()"
-								update=":frmUsuario:tbDadosusuario"/>	
+								update=":frmUsuario:tbDadosusuario"
+								icon="fa fa-fw fa-arrow-left" />	
 						</f:facet>
 					</h:panelGrid>
 				</h:form>

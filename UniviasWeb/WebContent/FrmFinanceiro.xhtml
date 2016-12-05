@@ -102,7 +102,10 @@
 						<p:inputText
 							id="txtVencimento"
 							label="lblVencimento"
-							value="#{crtfinanceiro.model.vencimento}"/>
+							value="#{crtfinanceiro.model.vencimento}"
+							showOn="button"
+							pattern="dd/MM/yyyy"
+							mask="true"/>
 						
 						<h:outputLabel id="lblNumeroDocumento" value="Numero Documento" />
 						<p:inputText

@@ -15,6 +15,12 @@
 		<body>
 			<h:form id="frmContrato">
 				<p:panel header="Manter Contrato">
+					<p:toolbar id="tbActions">
+						<f:facet name="left">
+							<p:commandButton value="Inlcuir" update=":form" oncomplete="PF('dlg1').show()" action="#{crtcontrato.create()}" icon="fa fa-plus" />
+						</f:facet>
+					</p:toolbar>
+					<p:sticky target="tbActions" />
 					<p:dataTable
 						id="tbDadosContrato"
 						value="#{crtcontrato.getAll()}"
@@ -23,43 +29,40 @@
 						var="vContrato"
 						rowKey="#{vContrato.id}">
 						
-						<f:facet name="header">Lista de Contratos</f:facet>
-						<!--
-						<p:column>
-							<f:facet name="header">Ação de usuário</f:facet>
-							<h:commandButton action="PF('dlg1').show()">Botão</h:commandButton>
+						<f:facet name="header">
+							<h:outputText value="Lista de Contrato" />
+						</f:facet>
+						<p:column style="width:32px;text-align: center">
+							<p:commandButton update=":form" oncomplete="PF('dlgRemove').show()" icon="fa fa-fw fa-close" title="Excluir">
+								<f:setPropertyActionListener value="#{vContrato}" target="#{crtcontrato.model}" />
+							</p:commandButton>							
 						</p:column>
-						-->
+						<p:column style="width:32px;text-align: center">
+							<p:commandButton  update=":form" oncomplete="PF('dlg1').show()" icon="fa fa-fw fa-edit" title="Editar">
+								<f:setPropertyActionListener value="#{vContrato}" target="#{crtcontrato.model}"  />
+							</p:commandButton>							
+						</p:column>
+								
 						<p:column>
 							<f:facet name="header">Titulo</f:facet>
-							<h:outputText value="#{vContrato.titulo}"/>
+							<h:outputText value="#{vContrato.titulo}" />
 						</p:column>
 						
-						<p:column>
-							<f:facet name="header">Contrato Inicio</f:facet>
-							<h:outputText value="#{vContrato.periodoInicial}" />
+						<p:column width="60">
+							<f:facet name="header">Início</f:facet>
+							<h:outputText value="#{vContrato.periodoInicial}" >
+								<f:convertDateTime pattern="dd/MM/yyyy" />
+							</h:outputText>
 						</p:column>
-						<p:column>
-							<f:facet name="header">Contrato Fim</f:facet>
-							<h:outputText value="#{vContrato.periodoFinal}"/>
+						<p:column width="60">
+							<f:facet name="header">Fim</f:facet>
+							<h:outputText value="#{vContrato.periodoFinal}">
+								<f:convertDateTime pattern="dd/MM/yyyy" />
+							</h:outputText>
 						</p:column>
-						
 						<f:facet name="footer">
-							<p:commandButton
-								value="Incluir"
-								id="cbIncluir"
-								action="#{crtcontrato.create()}"
-								onsuccess="PF('dlg1').show()"
-								update=":frmContrato"/>
-							<p:commandButton
-								value="Alterar"
-								id="cbAlterar"
-								onsuccess="PF('dlg1').show()"
-								update=":frmContrato"/>
-							<p:commandButton
-								value="Excluir"
-								id="cbExcluir"
-								oncomplete="PF('dlgRemove').show()"/>
+					
+						
 						</f:facet>
 					</p:dataTable>
 				</p:panel>
@@ -67,7 +70,7 @@
 			
 			<!--  -->
 			
-			<p:dialog width="800px" height="500px" id="detailDialog" modal="true" header="Detalhe do Contrato" widgetVar="dlg1" appendTo="@(body)" >
+			<p:dialog id="detailDialog" modal="true" header="Detalhe do Contrato" widgetVar="dlg1" appendTo="@(body)" >
 				<h:form id="form">
 					<h:panelGrid id="formDetail" columns="2">
 					
@@ -75,8 +78,11 @@
 						<p:inputText
 							id="txtTitulo"
 							label="lblTitulo"
-							value="#{crtcontrato.model.titulo}"/>						
-					
+							value="#{crtcontrato.model.titulo}"
+							required="true"/>
+						<p:message for="txtTitulo"  />
+            			<h:outputText value="" />
+            			
 						<h:outputLabel id="lblContratoInicio" value="Contrato Inicio" />
 						<p:calendar
 							id="txtContratoInicio"
@@ -90,32 +96,41 @@
 						<p:calendar
 							id="txtContratoFim"
 							label="lblContratoFim"
-							value="#{crtcontrato.model.periodoInicial}"
+							value="#{crtcontrato.model.periodoFinal}"
 							showOn="button"
 							pattern="dd/MM/yyyy"
 							mask="true"/>
 						
 						<h:outputLabel id="lblContrato" value="Contrato" />
 						<p:inputTextarea
+							value="#{crtcontrato.model.textoContrato}"
 							rows="10"
 							cols="80"
 							scrollHeight="5"
-							autoResize="false"/>
+							autoResize="false"
+							required="true">
+							<f:validateLength minimum="20" /> 
+						</p:inputTextarea>
+						<p:message for="lblContrato" />
+          				<h:outputText value="" />
 						
 						<f:facet name="footer">
 							<p:commandButton
-								value="OK"
+								value="Salvar"
 								id="cbOK"
 								action="#{crtcontrato.save()}"
 								onsuccess="PF('dlg1').hide()"
 								update=":frmContrato:tbDadosContrato"
+								icon="fa fa-fw fa-save"
+								validateClient="true"
 								/>
 							<p:commandButton
-								value="Cancelar"
+								value="Voltar"
 								id="cbCancelar"
 								action="#{crtcontrato.create()}"
 								onsuccess="PF('dlg1').hide()"
-								update=":frmContrato:tbDadosContrato"/>	
+								update=":frmContrato:tbDadosContrato"
+								icon="fa fa-fw fa-arrow-left"/>		
 						</f:facet>
 					</h:panelGrid>
 				</h:form>
@@ -123,7 +138,7 @@
 		
 			<!--  -->
 		
-			<p:dialog width="500ox" height="300px" id="dlgRemove" modal="true" header="Confirmação" widgetVar="dlgRemove" appendTo="@(body)" >
+			<p:dialog width="250px" height="250px" id="dlgRemove" modal="true" header="Confirmação" widgetVar="dlgRemove" appendTo="@(body)" >
 				<h:form>
 					<h:panelGrid columns="2">
 						<h:commandButton
@@ -131,10 +146,12 @@
 							update=":frmContrato"
 							value="OK"/>
 						<h:commandButton
-							immediate="true"
-							update=":frmContrato"
-							value="Cancelar"
-						/>
+							value="Voltar"
+								id="cbCancelar"
+								action="#{crtcontrato.create()}"
+								onsuccess="PF('dlgRemove').hide()"
+								update=":frmContrato:tbDadosContrato"
+								icon="fa fa-fw fa-arrow-left"/>	
 					</h:panelGrid>
 				</h:form>
 			</p:dialog>
@@ -145,3 +162,4 @@
 		</ui:decorate>
 		
 </html>
+		

@@ -15,6 +15,12 @@
 		<body>
 			<h:form id="frmUniversitario">
 				<p:panel header="Manter Universitário">
+					<p:toolbar id="tbActions">
+						<f:facet name="left">
+							<p:commandButton value="Inlcuir" update=":form" oncomplete="PF('dlg1').show()" action="#{crtuniversitario.create()}" icon="fa fa-plus" />
+						</f:facet>
+					</p:toolbar>
+					<p:sticky target="tbActions" />
 					<p:dataTable
 						id="tbDadosuniversitario"
 						value="#{crtuniversitario.getAll()}"
@@ -24,17 +30,16 @@
 						rowKey="#{vUniversitario.id}">
 						
 						<f:facet name="header">Lista de Universitários</f:facet>
-						<!--
-						<p:column>
-							<f:facet name="header">Ação de usuário</f:facet>
-							<h:commandButton action="PF('dlg1').show()">Botão</h:commandButton>
+						<p:column style="width:32px;text-align: center">
+							<p:commandButton  update=":form" oncomplete="PF('dlg1').show()" icon="fa fa-fw fa-edit" title="Editar">
+								<f:setPropertyActionListener value="#{vUniversitario}" target="#{crtuniversitario.model}"  />
+							</p:commandButton>							
 						</p:column>
-						-->
 						<p:column>
 							<f:facet name="header">Nome</f:facet>
 							<h:outputText value="#{vUniversitario.nome}" />
 						</p:column>
-						<p:column>
+						<p:column width="100">
 							<f:facet name="header">Telefone</f:facet>
 							<h:outputText value="#{vUniversitario.telefone}"/>
 						</p:column>
@@ -43,36 +48,17 @@
 							<h:outputText value="#{vUniversitario.email}"/>
 						</p:column>
 						
-						<p:column>
+						<p:column width="100">
 							<f:facet name="header">Documento Identificação</f:facet>
 							<h:outputText value="#{vUniversitario.doctoIdentificacao}"/>
-						</p:column>
-						<p:column>
-							<f:facet name="header">Localizações</f:facet>
-							<h:outputText value="#{vUniversitario.localizacoes}"/>
-						</p:column>
-						<p:column>
-							<f:facet name="header">Contratos</f:facet>
-							<h:outputText value="#{vUniversitario.contratos}"/>
 						</p:column>
 						<p:column>
 							<f:facet name="header">Universidade</f:facet>
 							<h:outputText value="#{vUniversitario.universidade}"/>
 						</p:column>
-						
-											
+								
 						<f:facet name="footer">
-							<p:commandButton
-								value="Incluir"
-								id="cbIncluir"
-								action="#{crtuniversitario.create()}"
-								onsuccess="PF('dlg1').show()"
-								update=":frmUniversitario"/>
-							<p:commandButton
-								value="Alterar"
-								id="cbAlterar"
-								onsuccess="PF('dlg1').show()"
-								update=":frmUniversitario"/>
+						
 						</f:facet>
 					</p:dataTable>
 				</p:panel>
@@ -80,9 +66,9 @@
 			
 			<!--  -->
 			
-			<p:dialog width="500px" height="300px" id="detailDialog"
+			<p:dialog id="detailDialog"
 				modal="true"
-				header="Detalhe do Universitario"
+				header="Detalhe do Universitário"
 				widgetVar="dlg1"
 				appendTo="@(body)">
 				<h:form id="form">
@@ -92,26 +78,53 @@
 						<p:inputText
 							id="txtNome"
 							label="lblNome"
-							value="#{crtuniversitario.model.nome}"/>
+							value="#{crtuniversitario.model.nome}"
+							required="true"/>
+						<p:message for="txtNome"/>
+            			<h:outputText value="" />
 						
 						<h:outputLabel id="lblTelefone" value="Telefone" />
 						<p:inputText
 							id="txtTelefone"
 							label="lblTelefone"
-							value="#{crtuniversitario.model.telefone}"/>
+							value="#{crtuniversitario.model.telefone}">
+							<f:validateRequired/>
+						</p:inputText>
+						<p:message for="txtTelefone"/>
+           				<h:outputText value=""/>
+						
 							
 						<h:outputLabel id="lblE-mail" value="E-mail" />
 						<p:inputText
 							id="txtE-mail"
 							label="lblE-mail"
-							value="#{crtuniversitario.model.email}"/>
+							value="#{crtuniversitario.model.email}"
+							required="true" 
+							/>
+						<p:message for="txtE-mail"/>
+            			<h:outputText value=""/>
 						
 						<h:outputLabel id="lblDocumentoIdentificacao" value="Documento Identificacao" />
 						<p:inputText
 							id="txtDocumentoIdentificacao"
 							label="lblDocumentoIdentificacao"
-							value="#{crtuniversitario.model.doctoIdentificacao}"/>
+							value="#{crtuniversitario.model.doctoIdentificacao}">
+							<f:validateRequired/>
+						</p:inputText>
+						<p:message for="txtDocumentoIdentificacao"/>
+           				<h:outputText value=""/>
+							
+							
+						<h:outputLabel id="lblUniversidade" value="Universidade" />
+						<p:inputText
+							id="txtUniversidade"
+							label="lblUniversidade"
+							value="#{crtuniversitario.model.universidade}"
+							required="true"/>
+						<p:message for="txtUniversidade"/>
+            			<h:outputText value="" />
 						
+						<!--
 						<h:outputLabel id="lblLocalizacoes" value="Localizacoes" />
 						<p:inputText
 							id="txtLocalizacoes"
@@ -123,27 +136,25 @@
 							id="txtContratos"
 							label="lblContratos"
 							value="#{crtuniversitario.model.contratos}"/>
+							-->
 							
-						<h:outputLabel id="lblUniversidade" value="Universidade" />
-						<p:inputText
-							id="txtUniversidade"
-							label="lblUniversidade"
-							value="#{crtuniversitario.model.universidade}"/>
-						
 						<f:facet name="footer">
 							<p:commandButton
-								value="OK"
+								value="Salvar"
 								id="cbOK"
 								action="#{crtuniversitario.save()}"
 								onsuccess="PF('dlg1').hide()"
 								update=":frmUniversitario:tbDadosuniversitario"
+								icon="fa fa-fw fa-save"
+								validateClient="true" 
 								/>
 							<p:commandButton
-								value="Cancelar"
+								value="Voltar"
 								id="cbCancelar"
 								action="#{crtuniversitario.create()}"
 								onsuccess="PF('dlg1').hide()"
-								update=":frmUniversitario:tbDadosuniversitario"/>	
+								update=":frmUniversitario:tbDadosuniversitario"
+								icon="fa fa-fw fa-arrow-left" />	
 						</f:facet>
 					</h:panelGrid>
 				</h:form>

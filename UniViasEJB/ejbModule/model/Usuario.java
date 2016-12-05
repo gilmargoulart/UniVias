@@ -21,7 +21,7 @@ import enums.NivelPermissao;
 	),
 	@NamedQuery(
 		name = "validaUsuario"
-		,query = "select u from Usuario u where u.login = :usuario and u.senha = :senha"
+		,query = "select u from Usuario u where u.login = :login and u.senha = :senha"
 	)
 })
 
