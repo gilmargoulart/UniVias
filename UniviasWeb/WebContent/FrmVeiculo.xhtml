@@ -15,6 +15,11 @@
 		<body>
 			<h:form id="frmVeiculo">
 				<p:panel header="Manter Veículo">
+					<p:toolbar id="tbActions">
+						<f:facet name="left">
+							<p:commandButton value="Inlcuir" update=":form" oncomplete="PF('dlg1').show()" action="#{crtveiculo.create()}" icon="fa fa-plus" />
+						</f:facet>
+					</p:toolbar>
 					<p:dataTable
 						id="tbDadosveiculo"
 						value="#{crtveiculo.getAll()}"
@@ -24,6 +29,11 @@
 						rowKey="#{vVeiculo.id}">
 						
 						<f:facet name="header">Lista de Veículos</f:facet>
+							<p:column style="width:32px;text-align: center">
+								<p:commandButton  update=":form" oncomplete="PF('dlg1').show()" icon="fa fa-fw fa-edit" title="Editar">
+								<f:setPropertyActionListener value="#{vVeiculo}" target="#{crtveiculo.model}"  />
+							</p:commandButton>							
+						</p:column>
 						<!--
 						<p:column>
 							<f:facet name="header">Ação de usuário</f:facet>
@@ -57,17 +67,7 @@
 					
 											
 						<f:facet name="footer">
-							<p:commandButton
-								value="Incluir"
-								id="cbIncluir"
-								action="#{crtveiculo.create()}"
-								onsuccess="PF('dlg1').show()"
-								update=":frmVeiculo"/>
-							<p:commandButton
-								value="Alterar"
-								id="cbAlterar"
-								onsuccess="PF('dlg1').show()"
-								update=":frmVeiculo"/>
+						
 						</f:facet>
 					</p:dataTable>
 				</p:panel>

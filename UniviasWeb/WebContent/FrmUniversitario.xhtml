@@ -15,6 +15,12 @@
 		<body>
 			<h:form id="frmUniversitario">
 				<p:panel header="Manter Universitário">
+					<p:toolbar id="tbActions">
+						<f:facet name="left">
+							<p:commandButton value="Inlcuir" update=":form" oncomplete="PF('dlg1').show()" action="#{crtuniversitario.create()}" icon="fa fa-plus" />
+						</f:facet>
+					</p:toolbar>
+					<p:sticky target="tbActions" />
 					<p:dataTable
 						id="tbDadosuniversitario"
 						value="#{crtuniversitario.getAll()}"
@@ -24,6 +30,11 @@
 						rowKey="#{vUniversitario.id}">
 						
 						<f:facet name="header">Lista de Universitários</f:facet>
+						<p:column style="width:32px;text-align: center">
+								<p:commandButton  update=":form" oncomplete="PF('dlg1').show()" icon="fa fa-fw fa-edit" title="Editar">
+								<f:setPropertyActionListener value="#{vUniversitario}" target="#{crtuniversitario.model}"  />
+							</p:commandButton>							
+						</p:column>
 						<!--
 						<p:column>
 							<f:facet name="header">Ação de usuário</f:facet>
@@ -62,17 +73,7 @@
 						
 											
 						<f:facet name="footer">
-							<p:commandButton
-								value="Incluir"
-								id="cbIncluir"
-								action="#{crtuniversitario.create()}"
-								onsuccess="PF('dlg1').show()"
-								update=":frmUniversitario"/>
-							<p:commandButton
-								value="Alterar"
-								id="cbAlterar"
-								onsuccess="PF('dlg1').show()"
-								update=":frmUniversitario"/>
+						
 						</f:facet>
 					</p:dataTable>
 				</p:panel>
