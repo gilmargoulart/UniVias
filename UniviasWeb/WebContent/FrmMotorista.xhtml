@@ -42,7 +42,7 @@
 							<f:facet name="header">Nome</f:facet>
 							<h:outputText value="#{vMotorista.nome}" />
 						</p:column>
-						<p:column width="100">
+						<p:column>
 							<f:facet name="header">Telefone</f:facet>
 							<h:outputText value="#{vMotorista.telefone}"/>
 						</p:column>
@@ -50,17 +50,17 @@
 							<f:facet name="header">E-mail</f:facet>
 							<h:outputText value="#{vMotorista.email}"/>
 						</p:column>
-						<p:column width="40">
+						<p:column>
 							<f:facet name="header">Status</f:facet>
 							<h:outputText value="#{vMotorista.status.description}"/>
 						</p:column>
-						<p:column width="60">
+						<p:column>
 							<f:facet name="header">Admissão</f:facet>
 							<h:outputText value="#{vMotorista.admissao}">
 								<f:convertDateTime pattern="dd/MM/yyyy" />
 							</h:outputText>
 						</p:column>
-						<p:column width="60">
+						<p:column>
 							<f:facet name="header">Demissão</f:facet>
 							<h:outputText value="#{vMotorista.demissao}">
 								<f:convertDateTime pattern="dd/MM/yyyy" />
@@ -93,7 +93,7 @@
 							required="true" 
 							/>
 						<p:message for="txtNome"  />
-            			<h:outputText value="#{crtmotorista.modelMotorista.nome}" />
+            			<h:outputText value="" />
 			
 	                   						
 						<h:outputLabel id="lblTelefone" value="Telefone" />
@@ -104,7 +104,7 @@
 							<f:validateDoubleRange minimum="8" maximum="13"/>
 						</p:inputText>
 						<p:message for="txtTelefone" />
-           				<h:outputText value="#{crtmotorista.modelMotorista.telefone}" />
+           				<h:outputText value="" />
 							
 						<h:outputLabel id="lblE-mail" value="E-mail" />
 						<p:inputText
@@ -114,7 +114,7 @@
 							required="true" 
 							/>
 						<p:message for="txtE-mail"  />
-            			<h:outputText value="#{crtmotorista.modelMotorista.email}" />
+            			<h:outputText value="" />
 
 						<h:outputLabel id="lblStatus" value="Status" for="cbxStatus" />
 						<h:selectOneMenu label="Status" value="#{crtmotorista.modelMotorista.status}" id="cbxStatus" >
