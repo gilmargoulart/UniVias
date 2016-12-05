@@ -12,6 +12,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Future;
+import javax.validation.constraints.Size;
 
 @NamedQueries({
 	@NamedQuery(
@@ -31,15 +33,18 @@ public class Contrato {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
+	@Size(min=20)
 	@Column(length = 2000)
 	private String textoContrato;
 	
+	@Size(min=2,max=10)
 	@Column(length = 500)
 	private String titulo;
 	
 	@Temporal(value = TemporalType.DATE)
 	private Date periodoInicial = new Date();
 	
+	@Future
 	@Temporal(value = TemporalType.DATE)
 	private Date periodoFinal;
 	
