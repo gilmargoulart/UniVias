@@ -59,7 +59,7 @@
 			
 			<p:dialog id="detailDialog"
 				modal="true"
-				header="Detalhe do Usuario"
+				header="Detalhe do Usuário"
 				widgetVar="dlg1"
 				appendTo="@(body)">
 				<h:form id="form">
@@ -78,11 +78,13 @@
 							value="#{crtusuario.model.login}"/>
 							
 						<h:outputLabel id="lblPermissao" value="Permissao" />
-						<p:inputText
-							id="txtPermissao"
-							label="lblPermissao"
-							value="#{crtusuario.model.permissao}" />
-						
+						<h:selectOneMenu label="Permissão" value="#{crtusuario.model.permissao}" id="cbxNivelPermissao" >
+							<f:selectItems
+								value="#{crtusuario.nivelPermissaoList}"
+								var="vNivelPermissao"
+								itemLabel="#{vNivelPermissao.description}"
+								itemValue="#{vNivelPermissao}"/>
+						</h:selectOneMenu>
 						<h:outputLabel id="lblSenha" value="Senha" />
 						<p:password
 							id="txtSenha"
