@@ -5,6 +5,7 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import ejb.UsuarioBeanLocal;
+import enums.NivelPermissao;
 import model.Usuario;
 
 @ManagedBean(name = "crtusuario")
@@ -33,6 +34,10 @@ public class CrtUsuario {
 	
 	public void create(){
 		model = new Usuario();
+	}
+	
+	public NivelPermissao[] getNivelPermissaoList() {
+		return NivelPermissao.values();
 	}
 	
 	public void save(){
