@@ -37,9 +37,10 @@ public class Contrato {
 	@Column(length = 2000)
 	private String textoContrato;
 	
-	@Size(min=2,max=10)
+	@Size(min=5)
 	@Column(length = 500)
 	private String titulo;
+	
 	
 	@Temporal(value = TemporalType.DATE)
 	private Date periodoInicial = new Date();

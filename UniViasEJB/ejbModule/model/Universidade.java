@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.validation.constraints.Size;
 
 @NamedQueries({
 	@NamedQuery(
@@ -33,9 +34,11 @@ public class Universidade {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
+	@Size(min=3)
 	@Column(length = 80)
 	private String nomeFantasia;
 	
+	@Size(min=3)
 	@Column(length = 120)
 	private String nomeCompleto;
 	

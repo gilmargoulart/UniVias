@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Size;
 
 import exemplo.itemBem;
 
@@ -38,11 +39,13 @@ public class Inquilino {
 	/**
 	 * Nome completo
 	 */
+	@Size(min=2,max=25)
 	private String nome;
 
 	/**
 	 * Endereço de e-mail
 	 */
+	@Size(min=2,max=25)
 	private String email;
 
 	/**
@@ -54,6 +57,7 @@ public class Inquilino {
 	 * Identificação do responsável.
 	 * Ex: Nome completo
 	 */
+	@Size(min=2,max=25)
 	private String responsavel;
 
 	/**

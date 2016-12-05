@@ -14,6 +14,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Future;
 import javax.validation.constraints.Size;
 
 import enums.Status;
@@ -36,9 +37,10 @@ public class Motorista {
 	private long id;
 	
 	@Column(length = 120)
-	@Size(min=3, message="Nome é obrigatório.")
+	@Size(min=3)
 	private String nome;
 	
+	@Size(min=3)
 	@Column(length = 400)
 	private String email;
 	
@@ -48,6 +50,7 @@ public class Motorista {
 	@Temporal(value = TemporalType.DATE)
 	private Date admissao = new Date();
 	
+	@Future
 	@Temporal(value = TemporalType.DATE)
 	private Date demissao;
 

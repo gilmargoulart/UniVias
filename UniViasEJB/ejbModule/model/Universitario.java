@@ -15,6 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Size;
 
 @NamedQueries({
 	@NamedQuery(
@@ -34,9 +35,11 @@ public class Universitario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
+	@Size(min=3)
 	@Column(length = 120)
 	private String nome;
 	
+	@Size(min=3)
 	private String email;
 	
 	/**
@@ -45,6 +48,7 @@ public class Universitario {
 	@Column(length = 20)
 	private String doctoIdentificacao;
 	
+	@Size(min=8, max=13)
 	@Column(length = 20)
 	private String telefone;
 	

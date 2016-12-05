@@ -9,6 +9,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @NamedQueries({
 	@NamedQuery(
@@ -28,17 +33,23 @@ public class Veiculo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
+	@Size(min=3)
 	@Column(length = 12)
 	private String placa;
 	
+	@Size(min=3)
 	@Column(length = 40)
 	private String marca;
 	
+	@Size(min=3)
 	@Column(length = 60)
 	private String modelo;
 	
+	@Min(1930)
+	@Max(3500)
 	private int ano;
 	
+	@Size(min=3)
 	@Column(length = 30)
 	private String cor;
 	
